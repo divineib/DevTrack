@@ -76,21 +76,3 @@ Planned additions include:
 - Production deployment for final submission
 
 Progress tracking is maintained in `PROJECT_STATUS.md`.
-
-## Repository Visibility and Usage
-
-- This repository can be **public or private** depending on how it is created in GitHub.
-- If created as public, anyone can view the code.
-- If created as private, only invited collaborators can access it.
-
-If you use this code as a starter, please adapt it to your own project requirements and security needs before production use.
-
-## GitHub Push Commands
-
-After creating a repository on GitHub, push this code with:
-
-```bash
-git branch -M main
-git remote add origin https://github.com/<your-username>/<your-repository>.git
-git push -u origin main
-```
