@@ -1,14 +1,18 @@
 ﻿(() => {
+    // Root html element is used to switch theme variables in CSS.
     const root = document.documentElement;
     const toggle = document.getElementById("themeToggle");
+    // Footer year is set dynamically so it stays current.
     const yearEl = document.getElementById("currentYear");
     const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
 
+    // Load saved preference or fall back to OS/browser preference.
     const savedTheme = localStorage.getItem("devtrack-theme");
     const initialTheme = savedTheme ?? (prefersLight ? "light" : "dark");
     root.setAttribute("data-theme", initialTheme);
 
     if (toggle) {
+        // Keep icon/aria text aligned with active theme for accessibility.
         const updateLabel = () => {
             const isLight = root.getAttribute("data-theme") === "light";
             toggle.querySelector(".icon-wrap").textContent = isLight ? "☀" : "◐";
@@ -25,10 +29,14 @@
         });
     }
 
+    // Keep copyright date fresh each year.
     if (yearEl) {
         yearEl.textContent = `${new Date().getFullYear()}`;
     }
 
+    // Lightweight scroll-based reveal animation for dashboard cards.
+    // Placeholder for future enhancement:
+    // migrate to a dedicated animation library if interaction complexity grows.
     const animated = document.querySelectorAll(".fade-in");
     const observer = new IntersectionObserver(
         (entries) => {

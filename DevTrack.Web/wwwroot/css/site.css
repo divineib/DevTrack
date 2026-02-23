@@ -1,3 +1,8 @@
+/*
+  DevTrack UI Theme Tokens
+  Placeholder for Part III:
+  - move hard-coded values into a design token strategy if theme system expands.
+*/
 :root {
   --bg: #0d1117;
   --surface: #161b22;
@@ -46,6 +51,7 @@ a {
 }
 
 .app-shell {
+  /* Main page container with sticky header + responsive content area. */
   max-width: 1200px;
   margin: 0 auto;
   min-height: 100vh;
@@ -55,6 +61,7 @@ a {
 }
 
 .topbar {
+  /* GitHub-inspired translucent top navigation shell. */
   position: sticky;
   top: 0;
   z-index: 20;
@@ -173,6 +180,7 @@ a {
 }
 
 .hero {
+  /* Shared hero style used across overview/dashboard/admin pages. */
   border: 1px solid var(--border);
   background: linear-gradient(140deg, color-mix(in oklab, var(--surface) 88%, transparent), var(--surface-2));
   border-radius: 20px;
@@ -198,6 +206,7 @@ a {
 }
 
 .grid {
+  /* Reusable 12-column responsive grid for cards and panels. */
   margin-top: 1rem;
   display: grid;
   gap: 1rem;
