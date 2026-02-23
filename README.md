@@ -10,11 +10,21 @@
   <img src="https://img.shields.io/badge/Status-Active_Development-1f6feb?style=for-the-badge" alt="Status" />
 </div>
 
+<div align="center">
+  <img src="https://img.shields.io/badge/Language-C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white" alt="C#" />
+  <img src="https://img.shields.io/badge/Language-Razor-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt="Razor" />
+  <img src="https://img.shields.io/badge/Language-CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS" />
+  <img src="https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+</div>
+
 ## Overview
 
 DevTrack is a web application focused on helping students manage software projects, track skill growth, and present progress in a clean, structured way.
 
 The current implementation provides a polished MVC application shell with a modern interface and is set up for the next stages: database integration, authentication/authorization, CRUD workflows, and GitHub API integration.
+
+> [!NOTE]
+> This repository currently represents the project shell + interface foundation. Full data-backed features are in active development.
 
 ## Table of Contents
 
@@ -85,6 +95,9 @@ DevTrack/
 
 - .NET 10 SDK
 
+> [!IMPORTANT]
+> Use .NET 10 SDK to match the project target framework and avoid compatibility issues.
+
 ### Run Locally
 
 ```bash
@@ -94,6 +107,9 @@ dotnet run --project DevTrack.Web/DevTrack.Web.csproj
 ```
 
 Open the local URL shown in the terminal (for example: `http://localhost:5092`).
+
+> [!TIP]
+> Keep `dotnet watch run --project DevTrack.Web/DevTrack.Web.csproj` running during development for faster feedback.
 
 ## Roadmap
 
@@ -107,4 +123,7 @@ Planned next milestones:
 
 ## Documentation
 
-- `PROJECT_STATUS.md` contains the active implementation checklist and phase progress.
+- [`PROJECT_STATUS.md`](./PROJECT_STATUS.md) contains the active implementation checklist and phase progress.
+
+> [!WARNING]
+> This is an actively evolving academic project. Project structure and feature scope may change between milestone phases.

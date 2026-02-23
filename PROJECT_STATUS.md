@@ -2,6 +2,9 @@
 
 Simple project checklist for tracking progress across Parts I-IV.
 
+> [!IMPORTANT]
+> This file is checklist-only on purpose. It is used to track implementation status and pending requirements.
+
 ## 1) Phase Progress
 
 - [x] Part I: System definition and objective
@@ -66,3 +69,6 @@ Simple project checklist for tracking progress across Parts I-IV.
 - **Alternative option:** Heroku (only if student plan/resources are confirmed and tested)
 
 Current plan: proceed with Azure unless Heroku student tooling is already validated for this project.
+
+> [!CAUTION]
+> Do not mark deployment tasks as complete until the live URL is tested end-to-end for CRUD and role-based access behavior.
