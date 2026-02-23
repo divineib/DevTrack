@@ -5,16 +5,16 @@
 </div>
 
 <div align="center">
-  <img src="https://img.shields.io/badge/.NET-10-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 10" />
-  <img src="https://img.shields.io/badge/ASP.NET_Core-MVC-5C2D91?style=for-the-badge&logo=dotnet&logoColor=white" alt="ASP.NET Core MVC" />
-  <img src="https://img.shields.io/badge/Status-Active_Development-1f6feb?style=for-the-badge" alt="Status" />
+  <img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=fff" alt=".NET 10" />
+  <img src="https://img.shields.io/badge/ASP.NET_Core-MVC-5C2D91?logo=dotnet&logoColor=fff" alt="ASP.NET Core MVC" />
+  <img src="https://img.shields.io/badge/Status-Active_Development-1f6feb" alt="Status" />
 </div>
 
 <div align="center">
-  <img src="https://img.shields.io/badge/Language-C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white" alt="C#" />
-  <img src="https://img.shields.io/badge/Language-Razor-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt="Razor" />
-  <img src="https://img.shields.io/badge/Language-CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS" />
-  <img src="https://img.shields.io/badge/Language-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/C%23-239120?logo=c-sharp&logoColor=fff" alt="C#" />
+  <img src="https://img.shields.io/badge/Razor-512BD4?logo=dotnet&logoColor=fff" alt="Razor" />
+  <img src="https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=fff" alt="CSS" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000" alt="JavaScript" />
 </div>
 
 ## Overview
@@ -25,17 +25,6 @@ The current implementation provides a polished MVC application shell with a mode
 
 > [!NOTE]
 > This repository currently represents the project shell + interface foundation. Full data-backed features are in active development.
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Problem and Goal](#problem-and-goal)
-- [Current Implementation](#current-implementation)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-- [Roadmap](#roadmap)
-- [Documentation](#documentation)
 
 ## Problem and Goal
 
