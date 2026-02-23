@@ -1,40 +1,67 @@
-# DevTrack
+# <div align="center">DevTrack</div>
 
-DevTrack is a web application for tracking software projects, skills, and development progress over time.
+<div align="center">
+  Student project and skill tracking system built with ASP.NET Core MVC.
+</div>
 
-This repository contains the current implementation of the project using **ASP.NET Core MVC (.NET 10)**. The app currently includes a polished UI shell and foundational pages, and is being expanded in upcoming milestones to include full data persistence, authentication, role-based access, and API integration.
+<div align="center">
+  <img src="https://img.shields.io/badge/.NET-10-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 10" />
+  <img src="https://img.shields.io/badge/ASP.NET_Core-MVC-5C2D91?style=for-the-badge&logo=dotnet&logoColor=white" alt="ASP.NET Core MVC" />
+  <img src="https://img.shields.io/badge/Status-Active_Development-1f6feb?style=for-the-badge" alt="Status" />
+</div>
 
-## Why this project exists
+## Overview
 
-Many students and early-career developers split project history across notes, repositories, and folders. DevTrack aims to centralize that information in one system where users can:
+DevTrack is a web application focused on helping students manage software projects, track skill growth, and present progress in a clean, structured way.
 
-- Organize projects
+The current implementation provides a polished MVC application shell with a modern interface and is set up for the next stages: database integration, authentication/authorization, CRUD workflows, and GitHub API integration.
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Problem and Goal](#problem-and-goal)
+- [Current Implementation](#current-implementation)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Roadmap](#roadmap)
+- [Documentation](#documentation)
+
+## Problem and Goal
+
+Students often track their development work across multiple disconnected tools (notes, repository lists, folders, and task boards). DevTrack consolidates this into one system to make progress visible and easier to manage.
+
+Core goals:
+
+- Centralize project history
 - Track skills used in each project
-- Monitor progress over time
-- Prepare cleaner portfolio narratives
+- Show progress over time
+- Support role-based workflows for Student and Admin users
 
-## Current Features
+## Current Implementation
 
-- ASP.NET Core MVC project scaffolded with .NET 10
-- Multi-page application shell with:
-  - Overview (landing page)
-  - Dashboard
-  - Projects
-  - Admin
-  - Privacy
-- Shared layout/navigation architecture
-- Responsive, GitHub-inspired UI styling
-- Dark/Light mode toggle with persisted preference
-- Smooth front-end transitions and basic animation effects
-- Code comments and placeholders for upcoming implementation phases
+Implemented in this repository:
+
+- ASP.NET Core MVC shell with `.NET 10`
+- Core pages:
+  - `Overview`
+  - `Dashboard`
+  - `Projects`
+  - `Admin`
+  - `Privacy`
+- Shared layout and navigation architecture
+- Responsive, GitHub-inspired visual style
+- Dark/light mode toggle with saved preference
+- Smooth UI interactions and lightweight animations
+- In-code placeholders for upcoming core features
 
 ## Tech Stack
 
 - .NET 10
 - ASP.NET Core MVC
 - Razor Views
-- CSS (custom, responsive)
-- Vanilla JavaScript (theme and interaction behavior)
+- Custom CSS (responsive layout)
+- Vanilla JavaScript (theme + interactions)
 
 ## Project Structure
 
@@ -48,14 +75,17 @@ DevTrack/
 │   ├── wwwroot/
 │   ├── Program.cs
 │   └── DevTrack.Web.csproj
-├── README.md
-└── PROJECT_STATUS.md
+├── PROJECT_STATUS.md
+└── README.md
 ```
 
-## Getting Started (Local Development)
+## Getting Started
 
-1. Ensure .NET 10 SDK is installed.
-2. From the repository root, run:
+### Prerequisites
+
+- .NET 10 SDK
+
+### Run Locally
 
 ```bash
 dotnet restore DevTrack.slnx
@@ -63,16 +93,18 @@ dotnet build DevTrack.slnx
 dotnet run --project DevTrack.Web/DevTrack.Web.csproj
 ```
 
-3. Open the local URL printed in the terminal (for example, `http://localhost:5092`).
+Open the local URL shown in the terminal (for example: `http://localhost:5092`).
 
-## Development Roadmap
+## Roadmap
 
-Planned additions include:
+Planned next milestones:
 
-- Entity Framework Core data layer
-- Authentication and authorization (Student/Admin roles)
-- Full CRUD operations for projects and skills
-- GitHub API integration for repository metadata
-- Production deployment for final submission
+- Add Entity Framework Core data layer
+- Add ASP.NET Core Identity (Student/Admin roles)
+- Implement full CRUD for projects and skills
+- Integrate GitHub API repository sync
+- Deploy public production build
 
-Progress tracking is maintained in `PROJECT_STATUS.md`.
+## Documentation
+
+- `PROJECT_STATUS.md` contains the active implementation checklist and phase progress.
