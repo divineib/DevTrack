@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - DevTrack</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/DevTrack.Web.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="app-shell">
+        <header class="topbar">
+            <div class="topbar-left">
+                <a class="brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <span class="brand-mark">D</span>
+                    <span>DevTrack</span>
+                </a>
+                <nav class="main-nav">
+                    <a asp-area="" asp-controller="Home" asp-action="Index">Overview</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Projects">Projects</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Admin">Admin</a>
+                </nav>
+            </div>
+            <div class="topbar-right">
+                <button id="themeToggle" class="btn btn-ghost" type="button" aria-label="Toggle dark mode">
+                    <span class="icon-wrap">◐</span>
+                    <span>Theme</span>
+                </button>
+                <a class="btn btn-primary" href="#">Sign in</a>
+            </div>
+        </header>
+
+        <main class="content" role="main">
+            @RenderBody()
+        </main>
+
+        <footer class="footer">
+            <span>© <span id="currentYear"></span> DevTrack</span>
+            <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </footer>
+    </div>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

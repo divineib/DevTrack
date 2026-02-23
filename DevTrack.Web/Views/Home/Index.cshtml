@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Overview";
+}
+
+<section class="hero fade-in">
+    <h1>Build your developer journey with clarity.</h1>
+    <p class="subtitle">
+        DevTrack helps software engineering students track projects, map skills, and monitor growth over time.
+        Manage your portfolio, sync GitHub repositories later, and keep all progress in one clean workspace.
+    </p>
+    <div class="hero-actions">
+        <a asp-controller="Home" asp-action="Dashboard" class="btn btn-primary">Open Dashboard</a>
+        <a asp-controller="Home" asp-action="Projects" class="btn">Browse Projects</a>
+    </div>
+</section>
+
+<section class="grid">
+    <article class="card kpi fade-in">
+        <h3>Students</h3>
+        <p class="metric">128</p>
+        <p class="muted">Active this semester</p>
+    </article>
+
+    <article class="card kpi fade-in">
+        <h3>Projects</h3>
+        <p class="metric">764</p>
+        <p class="muted">Tracked in DevTrack</p>
+    </article>
+
+    <article class="card kpi fade-in">
+        <h3>Skills</h3>
+        <p class="metric">42</p>
+        <p class="muted">Categories available</p>
+    </article>
+
+    <article class="card kpi fade-in">
+        <h3>API Status</h3>
+        <p class="status-row"><span class="dot"></span> Ready</p>
+        <p class="muted">GitHub integration planned</p>
+    </article>
+
+    <article class="card panel fade-in">
+        <h2>What this shell includes</h2>
+        <ul class="list">
+            <li><span>Modern navigation + polished UI shell</span><span class="tag ok">Done</span></li>
+            <li><span>Dark/Light mode toggle with persistence</span><span class="tag ok">Done</span></li>
+            <li><span>Student dashboard and project views</span><span class="tag ok">Done</span></li>
+            <li><span>Admin view foundation</span><span class="tag warn">Starter</span></li>
+        </ul>
+    </article>
+
+    <article class="card panel fade-in">
+        <h2>Roadmap alignment</h2>
+        <ul class="list">
+            <li><span>ASP.NET Core MVC architecture</span><span class="tag ok">Implemented</span></li>
+            <li><span>Database-driven model support</span><span class="tag">Next step</span></li>
+            <li><span>Role-based access: Student/Admin</span><span class="tag">Next step</span></li>
+            <li><span>Public API integration (GitHub)</span><span class="tag">Next step</span></li>
+        </ul>
+    </article>
+</section>

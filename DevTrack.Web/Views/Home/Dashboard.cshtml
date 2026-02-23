@@ -1,0 +1,53 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<section class="hero fade-in">
+    <h1>Student Dashboard</h1>
+    <p class="subtitle">A focused snapshot of project momentum, skills, and upcoming tasks.</p>
+    <div class="hero-actions">
+        <a asp-controller="Home" asp-action="Projects" class="btn btn-primary">Manage Projects</a>
+        <a asp-controller="Home" asp-action="Admin" class="btn">Admin View</a>
+    </div>
+</section>
+
+<section class="grid">
+    <article class="card kpi fade-in">
+        <h3>In Progress</h3>
+        <p class="metric">5</p>
+        <p class="muted">Current semester</p>
+    </article>
+    <article class="card kpi fade-in">
+        <h3>Completed</h3>
+        <p class="metric">11</p>
+        <p class="muted">Total tracked</p>
+    </article>
+    <article class="card kpi fade-in">
+        <h3>Skills Used</h3>
+        <p class="metric">17</p>
+        <p class="muted">Across all projects</p>
+    </article>
+    <article class="card kpi fade-in">
+        <h3>Profile Score</h3>
+        <p class="metric">86%</p>
+        <p class="muted">Portfolio completeness</p>
+    </article>
+
+    <article class="card panel fade-in">
+        <h2>Recent activity</h2>
+        <ul class="list">
+            <li><span>Updated “Inventory Tracker API” status</span><span class="tag ok">Today</span></li>
+            <li><span>Added skill: Entity Framework Core</span><span class="tag">Yesterday</span></li>
+            <li><span>Created new project draft</span><span class="tag">2 days ago</span></li>
+        </ul>
+    </article>
+
+    <article class="card panel fade-in">
+        <h2>Upcoming goals</h2>
+        <ul class="list">
+            <li><span>Connect GitHub API token securely</span><span class="tag warn">Planned</span></li>
+            <li><span>Enable role-based dashboard cards</span><span class="tag warn">Planned</span></li>
+            <li><span>Add export to PDF resume summary</span><span class="tag">Backlog</span></li>
+        </ul>
+    </article>
+</section>
