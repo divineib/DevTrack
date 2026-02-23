@@ -1,22 +1,32 @@
 # DevTrack
 
-DevTrack is an ASP.NET Core MVC web application designed for software engineering students to track projects, skills, and growth over time. This repository currently contains the **Part II shell setup** for the course project, including a modern UI foundation, multiple pages, and project structure prepared for database and API integration in upcoming phases.
+DevTrack is a web application for tracking software projects, skills, and development progress over time.
 
-## Current Scope (Part II)
+This repository contains the current implementation of the project using **ASP.NET Core MVC (.NET 10)**. The app currently includes a polished UI shell and foundational pages, and is being expanded in upcoming milestones to include full data persistence, authentication, role-based access, and API integration.
+
+## Why this project exists
+
+Many students and early-career developers split project history across notes, repositories, and folders. DevTrack aims to centralize that information in one system where users can:
+
+- Organize projects
+- Track skills used in each project
+- Monitor progress over time
+- Prepare cleaner portfolio narratives
+
+## Current Features
 
 - ASP.NET Core MVC project scaffolded with .NET 10
-- Solution file and web project configured for development in Visual Studio Code
-- Initial pages implemented:
+- Multi-page application shell with:
   - Overview (landing page)
   - Dashboard
   - Projects
   - Admin
   - Privacy
-- Shared layout and navigation shell
+- Shared layout/navigation architecture
 - Responsive, GitHub-inspired UI styling
-- Dark/Light theme toggle with persisted user preference
-- Smooth UI transitions and basic front-end animation effects
-- Inline code comments and placeholders for upcoming Part III/IV features
+- Dark/Light mode toggle with persisted preference
+- Smooth front-end transitions and basic animation effects
+- Code comments and placeholders for upcoming implementation phases
 
 ## Tech Stack
 
@@ -42,7 +52,7 @@ DevTrack/
 └── PROJECT_STATUS.md
 ```
 
-## Run Locally
+## Getting Started (Local Development)
 
 1. Ensure .NET 10 SDK is installed.
 2. From the repository root, run:
@@ -55,7 +65,27 @@ dotnet run --project DevTrack.Web/DevTrack.Web.csproj
 
 3. Open the local URL printed in the terminal (for example, `http://localhost:5092`).
 
-## GitHub Setup
+## Development Roadmap
+
+Planned additions include:
+
+- Entity Framework Core data layer
+- Authentication and authorization (Student/Admin roles)
+- Full CRUD operations for projects and skills
+- GitHub API integration for repository metadata
+- Production deployment for final submission
+
+Progress tracking is maintained in `PROJECT_STATUS.md`.
+
+## Repository Visibility and Usage
+
+- This repository can be **public or private** depending on how it is created in GitHub.
+- If created as public, anyone can view the code.
+- If created as private, only invited collaborators can access it.
+
+If you use this code as a starter, please adapt it to your own project requirements and security needs before production use.
+
+## GitHub Push Commands
 
 After creating a repository on GitHub, push this code with:
 
@@ -64,15 +94,3 @@ git branch -M main
 git remote add origin https://github.com/<your-username>/<your-repository>.git
 git push -u origin main
 ```
-
-## Next Steps
-
-Planned implementation for Part III and Part IV includes:
-
-- Core models and data access layer (Entity Framework Core)
-- Authentication and authorization (Student/Admin roles)
-- CRUD features for projects and skills
-- GitHub API integration
-- Deployment and final demonstration deliverables
-
-For detailed planning and progress tracking, see `PROJECT_STATUS.md`.
