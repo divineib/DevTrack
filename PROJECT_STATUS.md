@@ -50,26 +50,7 @@ Simple project checklist for tracking progress across Parts I-IV.
 - [ ] Persist linked repository data
 - [ ] Display synced repository data in project views
 
-## 4) Weekly Status Update Template
-
-Use this format for class check-ins:
-
-### Current Progress and Demonstration
-
-- Summary of completed work:
-- Demonstration evidence (live walkthrough, screenshots, or short recording):
-
-### Next Week Objectives
-
-- Planned milestones:
-- Target timeline:
-
-### Assistance Needed
-
-- Technical blockers:
-- Requirement clarifications:
-
-## 5) Final Submission Readiness (Part IV)
+## 4) Final Submission Readiness (Part IV)
 
 - [ ] Complete MVC application aligned with the project objective
 - [ ] Complete full CRUD operations connected to the database
@@ -79,7 +60,7 @@ Use this format for class check-ins:
 - [ ] Finalize GitHub repository documentation
 - [ ] Prepare a 5-10 minute screencast (code walkthrough + live demo)
 
-## 6) Deployment Direction
+## 5) Deployment Direction
 
 - **Primary target:** Azure App Service (strong .NET support)
 - **Alternative option:** Heroku (only if student plan/resources are confirmed and tested)
