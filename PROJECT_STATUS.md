@@ -1,85 +1,88 @@
 # DevTrack Project Status
 
-This file tracks implementation status, upcoming milestones, and preparation for project check-ins.
+This document tracks implementation progress, upcoming milestones, and delivery readiness.
+It is intended for both project maintainers and external reviewers.
 
-## Overall Phase Status
+## 1) Phase Progress
 
-- [x] Part I: System definition and objective document
-- [x] Part II: MVC shell setup and initial UI/pages
+- [x] Part I: System definition and objective
+- [x] Part II: MVC shell setup and initial interface
 - [ ] Part III: Core components and data-backed views
-- [ ] Part IV: Final submission (deployment, demo, complete feature set)
+- [ ] Part IV: Final build, deployment, and presentation deliverables
 
-## Completed in Part II
+## 2) Completed Work (Part II)
 
-- [x] Created .NET 10 ASP.NET Core MVC project structure
-- [x] Implemented multi-page navigation shell (Overview, Dashboard, Projects, Admin, Privacy)
-- [x] Added responsive, modern interface styling
-- [x] Implemented dark/light theme toggle with saved preference
-- [x] Added starter interaction animations
-- [x] Added code comments and placeholders for upcoming implementation
-- [x] Initialized Git repository and committed baseline
+- [x] Created ASP.NET Core MVC project with .NET 10
+- [x] Added primary pages: Overview, Dashboard, Projects, Admin, Privacy
+- [x] Implemented shared layout and navigation shell
+- [x] Added responsive, modern UI styling
+- [x] Added dark/light theme toggle with persisted preference
+- [x] Added starter animation behaviors for UI transitions
+- [x] Added inline code comments and placeholder notes for future development
+- [x] Initialized Git and committed baseline project state
 
-## Part III Objectives (Core Components)
+## 3) Part III Scope (Core Components)
 
-### Architecture and Data
+### A. Data and Architecture
 
 - [ ] Add Entity Framework Core DbContext
-- [ ] Define core models (User profile, Project, Skill, Category, Review)
-- [ ] Create and apply initial database migrations
-- [ ] Seed starter data for development/testing
+- [ ] Define core domain models (Project, Skill, Category, Review, Profile)
+- [ ] Create and apply initial migrations
+- [ ] Add development seed data
 
-### Authentication and Authorization
+### B. Authentication and Authorization
 
 - [ ] Add ASP.NET Core Identity
-- [ ] Implement Register/Login/Logout views and flows
-- [ ] Define role setup (Student, Admin)
-- [ ] Restrict admin routes to Admin role
+- [ ] Build Register/Login/Logout flows
+- [ ] Configure role model (Student, Admin)
+- [ ] Restrict admin endpoints and views by role
 
-### CRUD and MVC Completion
+### C. Core MVC Features and CRUD
 
-- [ ] Implement ProjectsController with full CRUD
-- [ ] Implement Skills management (create/read/update/delete)
-- [ ] Connect dashboard cards and lists to real data
-- [ ] Add validation and user-friendly error handling
+- [ ] Implement data-backed controller/actions for projects
+- [ ] Implement full CRUD for projects
+- [ ] Implement skills management workflow
+- [ ] Replace demo metrics/cards with live database queries
+- [ ] Add model validation and user-facing error handling
 
-### API Integration
+### D. External API Integration
 
 - [ ] Integrate GitHub API for repository metadata
-- [ ] Store linked repository details in database
-- [ ] Display synced repository info in project views
+- [ ] Persist linked repository data
+- [ ] Display synced repository data in project views
 
-## Weekly Status Update Template
+## 4) Weekly Status Update Template
 
-Use this format for class updates:
+Use this format for class check-ins:
 
-### 1. Current Progress and Demonstration
+### Current Progress and Demonstration
 
 - Summary of completed work:
-- Demo evidence (live, screenshots, or video):
+- Demonstration evidence (live walkthrough, screenshots, or short recording):
 
-### 2. Next Week Objectives
+### Next Week Objectives
 
 - Planned milestones:
 - Target timeline:
 
-### 3. Request for Assistance
+### Assistance Needed
 
 - Technical blockers:
-- Clarifications needed:
+- Requirement clarifications:
 
-## Part IV Final Submission Readiness Checklist
+## 5) Final Submission Readiness (Part IV)
 
-- [ ] Full MVC app aligned with original concept
-- [ ] CRUD fully functional with database
+- [ ] Complete MVC application aligned with project objective
+- [ ] Full CRUD operations connected to database
 - [ ] Third-party API integration complete
-- [ ] Responsive UI verified on multiple screen sizes
-- [ ] Application deployed and public URL available
-- [ ] GitHub repository updated with documentation
-- [ ] 5-10 minute screen-recorded walkthrough completed
+- [ ] Responsive behavior verified (desktop + mobile)
+- [ ] Deployed application URL available and tested
+- [ ] GitHub repository finalized with updated documentation
+- [ ] 5-10 minute screencast prepared (code walkthrough + live demo)
 
-## Deployment Decision Notes
+## 6) Deployment Direction
 
-- Azure: best alignment with .NET ecosystem and long-term professional relevance
-- Heroku: possible option if student plan access is available, but .NET workflows may be less direct than Azure
+- **Recommended primary target:** Azure App Service (strong .NET support)
+- **Alternative:** Heroku (only if student plan/resources are confirmed and tested)
 
-Current recommendation: prioritize Azure App Service for final submission unless Heroku student credits/resources are already set up and tested.
+Current guidance: proceed with Azure unless Heroku student tooling is already validated for this project.
