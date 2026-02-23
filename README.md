@@ -4,18 +4,13 @@
   Student project and skill tracking system built with ASP.NET Core MVC.
 </div>
 
-<div align="center">
 [![.NET](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=fff)](#)
 [![ASP.NET Core MVC](https://img.shields.io/badge/ASP.NET_Core-MVC-5C2D91?logo=dotnet&logoColor=fff)](#)
 [![Status](https://img.shields.io/badge/Status-Active_Development-1f6feb)](#)
-</div>
-
-<div align="center">
-[![C#](https://custom-icon-badges.demolab.com/badge/C%23-%23239120.svg?logo=cshrp&logoColor=white)](#)
+[![C#](https://img.shields.io/badge/C%23-239120?logo=csharp&logoColor=fff)](#)
 [![Razor](https://img.shields.io/badge/Razor-512BD4?logo=dotnet&logoColor=fff)](#)
 [![CSS](https://img.shields.io/badge/CSS-639?logo=css&logoColor=fff)](#)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000)](#)
-</div>
 
 ## Overview
 
