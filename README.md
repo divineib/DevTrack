@@ -55,7 +55,7 @@ Implemented in this repository:
 
 - .NET 10
 - ASP.NET Core MVC
-- Razor Views
+- Razor Views (HTML + C#)
 - Custom CSS (responsive layout)
 - Vanilla JavaScript (theme + interactions)
 
