@@ -1,0 +1,88 @@
+@model DevTrack.Web.ViewModels.Projects.ProjectsIndexViewModel
+
+@{
+    // main data-backed projects page
+    ViewData["Title"] = "Projects";
+}
+
+<section class="hero fade-in">
+    <h1>project portfolio</h1>
+    <p class="subtitle">full crud for your project list + quick skill management.</p>
+    <div class="hero-actions">
+        <a asp-action="Create" class="btn btn-primary">+ new project</a>
+        <a asp-controller="Home" asp-action="Dashboard" class="btn">back to dashboard</a>
+    </div>
+</section>
+
+<section class="grid">
+    <article class="card full fade-in">
+        <h2>your projects</h2>
+        @if (!Model.Projects.Any())
+        {
+            <p class="muted">no projects yet. click new project to start.</p>
+        }
+        else
+        {
+            <ul class="list">
+                @foreach (var project in Model.Projects)
+                {
+                    <li>
+                        <span>
+                            <strong>@project.Title</strong><br />
+                            <span class="muted">@(project.Description ?? "no description yet")</span><br />
+                            <span class="muted">category: @(project.Category?.Name ?? "none")</span><br />
+                            <span class="muted">skills: @string.Join(", ", project.ProjectSkills.Select(ps => ps.Skill?.Name).Where(s => !string.IsNullOrWhiteSpace(s)))</span>
+                            @if (!string.IsNullOrWhiteSpace(project.GitHubRepoUrl))
+                            {
+                                <br />
+                                <a href="@project.GitHubRepoUrl" target="_blank" rel="noopener" class="muted">github: @project.GitHubRepoName</a>
+                            }
+                        </span>
+                        <span class="inline-actions">
+                            <span class="tag @(project.Status == DevTrack.Web.Models.ProjectStatus.Completed ? "ok" : project.Status == DevTrack.Web.Models.ProjectStatus.InProgress ? "warn" : "")">@project.Status</span>
+                            <a asp-action="Edit" asp-route-id="@project.Id" class="btn btn-small">edit</a>
+                            <form asp-action="Delete" asp-route-id="@project.Id" method="post" class="inline-form" onsubmit="return confirm('delete this project?');">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-small">delete</button>
+                            </form>
+                        </span>
+                    </li>
+                }
+            </ul>
+        }
+    </article>
+
+    <article class="card panel fade-in">
+        <h2>add skill</h2>
+        <form asp-action="AddSkill" method="post" class="form-stack">
+            @Html.AntiForgeryToken()
+            <label for="name">skill name</label>
+            <input id="name" name="name" class="input" />
+            <label for="categoryId">category</label>
+            <select id="categoryId" name="categoryId" class="input">
+                <option value="">none</option>
+                @foreach (var cat in Model.Projects.Select(p => p.Category).Where(c => c is not null).DistinctBy(c => c!.Id))
+                {
+                    if (cat is not null)
+                    {
+                        <option value="@cat.Id">@cat.Name</option>
+                    }
+                }
+            </select>
+            <button type="submit" class="btn btn-primary">save skill</button>
+        </form>
+    </article>
+
+    <article class="card panel fade-in">
+        <h2>skills in system</h2>
+        <ul class="list">
+            @foreach (var skill in Model.Skills.Take(12))
+            {
+                <li>
+                    <span>@skill.Name</span>
+                    <span class="tag">skill</span>
+                </li>
+            }
+        </ul>
+    </article>
+</section>

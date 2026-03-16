@@ -1,3 +1,5 @@
+@model List<DevTrack.Web.Models.Project>
+
 @{
     // Student workspace page (currently demo data only).
     ViewData["Title"] = "Dashboard";
@@ -14,36 +16,46 @@
     </div>
 </section>
 
-@* Placeholder metrics. These should come from service/repository layer in Part III. *@
 <section class="grid">
     <article class="card kpi fade-in">
         <h3>In Progress</h3>
-        <p class="metric">5</p>
+        <p class="metric">@ViewBag.InProgressCount</p>
         <p class="muted">Current semester</p>
     </article>
     <article class="card kpi fade-in">
         <h3>Completed</h3>
-        <p class="metric">11</p>
+        <p class="metric">@ViewBag.CompletedCount</p>
         <p class="muted">Total tracked</p>
     </article>
     <article class="card kpi fade-in">
         <h3>Skills Used</h3>
-        <p class="metric">17</p>
+        <p class="metric">@ViewBag.SkillCount</p>
         <p class="muted">Across all projects</p>
     </article>
     <article class="card kpi fade-in">
         <h3>Profile Score</h3>
-        <p class="metric">86%</p>
+        <p class="metric">@ViewBag.ProfileScore%</p>
         <p class="muted">Portfolio completeness</p>
     </article>
 
     <article class="card panel fade-in">
         <h2>Recent activity</h2>
-        <ul class="list">
-            <li><span>Updated “Inventory Tracker API” status</span><span class="tag ok">Today</span></li>
-            <li><span>Added skill: Entity Framework Core</span><span class="tag">Yesterday</span></li>
-            <li><span>Created new project draft</span><span class="tag">2 days ago</span></li>
-        </ul>
+        @if (!Model.Any())
+        {
+            <p class="muted">no project activity yet. create your first project.</p>
+        }
+        else
+        {
+            <ul class="list">
+                @foreach (var project in Model)
+                {
+                    <li>
+                        <span>@project.Title</span>
+                        <span class="tag">@project.Status</span>
+                    </li>
+                }
+            </ul>
+        }
     </article>
 
     <article class="card panel fade-in">

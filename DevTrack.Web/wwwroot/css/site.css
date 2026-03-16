@@ -159,6 +159,11 @@ a {
   transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
 }
 
+.btn-small {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.82rem;
+}
+
 .btn:hover {
   transform: translateY(-1px);
   box-shadow: var(--shadow);
@@ -265,6 +270,71 @@ a {
   gap: 0.75rem;
 }
 
+.inline-actions {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.inline-form {
+  display: inline;
+}
+
+.welcome-text {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.auth-grid {
+  margin-top: 1rem;
+}
+
+.auth-card {
+  grid-column: 3 / span 8;
+}
+
+.form-stack {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-2);
+  color: var(--text);
+  padding: 0.6rem 0.75rem;
+}
+
+.textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.validation {
+  color: var(--danger);
+  font-size: 0.8rem;
+}
+
+.validation-errors {
+  color: var(--danger);
+  font-size: 0.86rem;
+}
+
+.checkbox-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.skills-checklist {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem 0.7rem;
+}
+
 .tag {
   font-size: 0.78rem;
   border-radius: 999px;
@@ -351,5 +421,13 @@ a {
   .panel,
   .full {
     grid-column: span 12;
+  }
+
+  .auth-card {
+    grid-column: span 12;
+  }
+
+  .skills-checklist {
+    grid-template-columns: 1fr;
   }
 }

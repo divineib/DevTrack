@@ -1,3 +1,5 @@
+@model IEnumerable<dynamic>
+
 @{
     // Admin/reviewer page for moderation and system-level visibility.
     ViewData["Title"] = "Admin";
@@ -15,35 +17,45 @@
 </section>
 
 <section class="grid">
-    @* Placeholder metrics. Replace with live moderation/reporting data in Part III. *@
     <article class="card kpi fade-in">
         <h3>Pending Review</h3>
-        <p class="metric">14</p>
+        <p class="metric">@ViewBag.PendingReviews</p>
         <p class="muted">Awaiting approval</p>
     </article>
     <article class="card kpi fade-in">
         <h3>Flagged</h3>
-        <p class="metric">3</p>
+        <p class="metric">@ViewBag.FlaggedReviews</p>
         <p class="muted">Need moderator action</p>
     </article>
     <article class="card kpi fade-in">
         <h3>Approved</h3>
-        <p class="metric">67</p>
+        <p class="metric">@ViewBag.ApprovedReviews</p>
         <p class="muted">This month</p>
     </article>
     <article class="card kpi fade-in">
         <h3>Role Health</h3>
-        <p class="status-row"><span class="dot"></span> Stable</p>
+        <p class="status-row"><span class="dot"></span> @ViewBag.RoleHealth</p>
         <p class="muted">Policy checks passing</p>
     </article>
 
     <article class="card panel fade-in">
         <h2>Moderation feed</h2>
-        <ul class="list">
-            <li><span>Project “Parking App” missing description</span><span class="tag warn">Needs fix</span></li>
-            <li><span>New skill category request: Cloud Security</span><span class="tag">Review</span></li>
-            <li><span>Student profile #204 verified</span><span class="tag ok">Approved</span></li>
-        </ul>
+        @if (!Model.Any())
+        {
+            <p class="muted">no moderation items yet.</p>
+        }
+        else
+        {
+            <ul class="list">
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <span>@(item.Notes ?? "review update")</span>
+                        <span class="tag">@item.Decision</span>
+                    </li>
+                }
+            </ul>
+        }
     </article>
 
     <article class="card panel fade-in">

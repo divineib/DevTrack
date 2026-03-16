@@ -1,0 +1,21 @@
+@model DevTrack.Web.ViewModels.Projects.ProjectFormViewModel
+
+@{
+    // create project screen
+    ViewData["Title"] = "Create Project";
+}
+
+<section class="hero fade-in">
+    <h1>create project</h1>
+    <p class="subtitle">add a project, choose status, and link github if you want.</p>
+</section>
+
+<section class="grid auth-grid">
+    <article class="card panel fade-in auth-card">
+        <partial name="_ProjectForm" model="Model" />
+    </article>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

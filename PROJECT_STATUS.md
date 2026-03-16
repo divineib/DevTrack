@@ -41,11 +41,11 @@ Simple project checklist for tracking progress across Parts I-IV.
 
 ### C. Core MVC Features and CRUD
 
-- [ ] Implement data-backed controller/actions for projects
-- [ ] Implement full CRUD for projects
-- [ ] Implement skills management workflow
-- [ ] Replace demo metrics/cards with live database queries
-- [ ] Add model validation and user-facing error handling
+- [x] Implement data-backed controller/actions for projects
+- [x] Implement full CRUD for projects
+- [x] Implement skills management workflow
+- [x] Replace demo metrics/cards with live database queries
+- [x] Add model validation and user-facing error handling
 
 ### D. External API Integration
 

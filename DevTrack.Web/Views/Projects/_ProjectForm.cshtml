@@ -1,0 +1,54 @@
+@model DevTrack.Web.ViewModels.Projects.ProjectFormViewModel
+
+@{
+    var actionName = (Model.Id ?? 0) > 0 ? "Edit" : "Create";
+}
+
+<form asp-action="@actionName" method="post" class="form-stack">
+    @Html.AntiForgeryToken()
+
+    @if ((Model.Id ?? 0) > 0)
+    {
+        <input type="hidden" asp-for="Id" />
+    }
+
+    <div asp-validation-summary="ModelOnly" class="validation-errors"></div>
+
+    <label asp-for="Title"></label>
+    <input asp-for="Title" class="input" />
+    <span asp-validation-for="Title" class="validation"></span>
+
+    <label asp-for="Description"></label>
+    <textarea asp-for="Description" class="input textarea"></textarea>
+    <span asp-validation-for="Description" class="validation"></span>
+
+    <label asp-for="Status"></label>
+    <select asp-for="Status" asp-items="Html.GetEnumSelectList<DevTrack.Web.Models.ProjectStatus>()" class="input"></select>
+    <span asp-validation-for="Status" class="validation"></span>
+
+    <label asp-for="GitHubRepoUrl"></label>
+    <input asp-for="GitHubRepoUrl" class="input" placeholder="https://github.com/owner/repo" />
+    <span asp-validation-for="GitHubRepoUrl" class="validation"></span>
+
+    <label asp-for="CategoryId"></label>
+    <select asp-for="CategoryId" asp-items="Model.Categories" class="input">
+        <option value="">none</option>
+    </select>
+
+    <label asp-for="SelectedSkillIds"></label>
+    <div class="skills-checklist">
+        @foreach (var skill in Model.Skills)
+        {
+            var isChecked = Model.SelectedSkillIds.Contains(int.Parse(skill.Value));
+            <label class="checkbox-row">
+                <input type="checkbox" name="SelectedSkillIds" value="@skill.Value" checked="@isChecked" />
+                <span>@skill.Text</span>
+            </label>
+        }
+    </div>
+
+    <div class="hero-actions">
+        <button type="submit" class="btn btn-primary">save</button>
+        <a asp-action="Index" class="btn">cancel</a>
+    </div>
+</form>
