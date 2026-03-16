@@ -1,42 +1,45 @@
-// Bootstrap the ASP.NET Core application host.
+using DevTrack.Web.Data;
+using Microsoft.EntityFrameworkCore;
+
+// bootstrap the asp.net core app host
 var builder = WebApplication.CreateBuilder(args);
 
-// Register MVC services (controllers + views).
-// Placeholder for Part III:
-// - Add DbContext for EF Core
-// - Add ASP.NET Identity services for authentication/authorization
-// - Add typed HttpClient for GitHub API integration
+// add db for part iii core data work
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// register mvc services (controllers + views)
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure middleware pipeline.
+// configure middleware pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // In production, force HTTPS with HSTS.
-    // Review HSTS duration/settings before final deployment.
+    // in production, force https with hsts
     app.UseHsts();
 }
 
-// Redirect HTTP requests to HTTPS.
+// redirect http requests to https
 app.UseHttpsRedirection();
-// Enable endpoint routing.
+// enable endpoint routing
 app.UseRouting();
 
-// Placeholder for Part III:
-// app.UseAuthentication();
-// Add authentication middleware once login/roles are configured.
+// auth middleware gets added in part iii section b
 app.UseAuthorization();
 
-// Serve static files (css/js/images) and map static asset endpoints.
+// serve static files (css/js/images) and map static asset endpoints
 app.MapStaticAssets();
 
-// Default MVC route for the application shell.
+// default mvc route for the app shell
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
-// Start handling incoming requests.
+// create db + seed starter data for dev
+await DbSeeder.SeedCoreDataAsync(app.Services);
+
+// start handling incoming requests
 app.Run();

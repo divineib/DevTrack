@@ -27,10 +27,10 @@ Simple project checklist for tracking progress across Parts I-IV.
 
 ### A. Data and Architecture
 
-- [ ] Add Entity Framework Core DbContext
-- [ ] Define core domain models (Project, Skill, Category, Review, Profile)
-- [ ] Create and apply initial migrations
-- [ ] Add development seed data
+- [x] Add Entity Framework Core DbContext
+- [x] Define core domain models (Project, Skill, Category, Review, Profile)
+- [x] Create and apply initial migrations
+- [x] Add development seed data
 
 ### B. Authentication and Authorization
 
