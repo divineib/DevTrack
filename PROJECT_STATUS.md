@@ -9,7 +9,7 @@ Simple project checklist for tracking progress across Parts I-IV.
 
 - [x] Part I: System definition and objective
 - [x] Part II: MVC shell setup and initial interface
-- [ ] Part III: Core components and data-backed views
+- [x] Part III: Core components and data-backed views
 - [ ] Part IV: Final build, deployment, and presentation deliverables
 
 ## 2) Completed Work (Part II)
@@ -49,9 +49,9 @@ Simple project checklist for tracking progress across Parts I-IV.
 
 ### D. External API Integration
 
-- [ ] Integrate GitHub API for repository metadata
-- [ ] Persist linked repository data
-- [ ] Display synced repository data in project views
+- [x] Integrate GitHub API for repository metadata
+- [x] Persist linked repository data
+- [x] Display synced repository data in project views
 
 ## 4) Final Submission Readiness (Part IV)
 
