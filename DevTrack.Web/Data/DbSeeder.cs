@@ -1,4 +1,5 @@
 using DevTrack.Web.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace DevTrack.Web.Data;
@@ -10,9 +11,20 @@ public static class DbSeeder
     {
         using var scope = services.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
         // make sure schema is there before we seed
         await db.Database.MigrateAsync();
+
+        // seed the two required roles for this class project
+        var roles = new[] { "Student", "Admin" };
+        foreach (var role in roles)
+        {
+            if (!await roleManager.RoleExistsAsync(role))
+            {
+                await roleManager.CreateAsync(new IdentityRole(role));
+            }
+        }
 
         if (!await db.Categories.AnyAsync())
         {

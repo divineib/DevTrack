@@ -34,10 +34,10 @@ Simple project checklist for tracking progress across Parts I-IV.
 
 ### B. Authentication and Authorization
 
-- [ ] Add ASP.NET Core Identity
-- [ ] Build Register/Login/Logout flows
-- [ ] Configure role model (Student, Admin)
-- [ ] Restrict admin endpoints and views by role
+- [x] Add ASP.NET Core Identity
+- [x] Build Register/Login/Logout flows
+- [x] Configure role model (Student, Admin)
+- [x] Restrict admin endpoints and views by role
 
 ### C. Core MVC Features and CRUD
 

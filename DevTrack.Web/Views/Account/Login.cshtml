@@ -1,0 +1,42 @@
+@model DevTrack.Web.ViewModels.Account.LoginViewModel
+
+@{
+    // login page for students/admins
+    ViewData["Title"] = "Login";
+}
+
+<section class="hero fade-in">
+    <h1>welcome back</h1>
+    <p class="subtitle">sign in to your devtrack account.</p>
+</section>
+
+<section class="grid auth-grid">
+    <article class="card panel fade-in auth-card">
+        <form asp-action="Login" method="post" class="form-stack">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="ReturnUrl" />
+
+            <div asp-validation-summary="ModelOnly" class="validation-errors"></div>
+
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="input" />
+            <span asp-validation-for="Email" class="validation"></span>
+
+            <label asp-for="Password"></label>
+            <input asp-for="Password" class="input" />
+            <span asp-validation-for="Password" class="validation"></span>
+
+            <label class="checkbox-row">
+                <input asp-for="RememberMe" />
+                <span>remember me</span>
+            </label>
+
+            <button type="submit" class="btn btn-primary">sign in</button>
+            <a asp-action="Register" class="btn">need an account? register</a>
+        </form>
+    </article>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

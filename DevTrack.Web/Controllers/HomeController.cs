@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using DevTrack.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DevTrack.Web.Controllers;
 
@@ -13,24 +14,24 @@ public class HomeController : Controller
     }
 
     // Student-focused dashboard shell.
-    // Placeholder for Part III:
-    // populate this view from database-backed models.
+    // student area needs login
+    [Authorize]
     public IActionResult Dashboard()
     {
         return View();
     }
 
     // Project portfolio listing page.
-    // Placeholder for Part III:
-    // switch from sample list to CRUD-driven project records.
+    // project page needs login
+    [Authorize]
     public IActionResult Projects()
     {
         return View();
     }
 
     // Admin/reviewer page for role-specific workflows.
-    // Placeholder for Part III:
-    // protect this route with role-based authorization.
+    // admin page is role protected
+    [Authorize(Roles = "Admin")]
     public IActionResult Admin()
     {
         return View();

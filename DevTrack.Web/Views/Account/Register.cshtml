@@ -1,0 +1,45 @@
+@model DevTrack.Web.ViewModels.Account.RegisterViewModel
+
+@{
+    // register page for new students
+    ViewData["Title"] = "Register";
+}
+
+<section class="hero fade-in">
+    <h1>create your account</h1>
+    <p class="subtitle">start tracking projects and skills in devtrack.</p>
+</section>
+
+<section class="grid auth-grid">
+    <article class="card panel fade-in auth-card">
+        <form asp-action="Register" method="post" class="form-stack">
+            @Html.AntiForgeryToken()
+            <input type="hidden" asp-for="ReturnUrl" />
+
+            <div asp-validation-summary="ModelOnly" class="validation-errors"></div>
+
+            <label asp-for="DisplayName"></label>
+            <input asp-for="DisplayName" class="input" />
+            <span asp-validation-for="DisplayName" class="validation"></span>
+
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="input" />
+            <span asp-validation-for="Email" class="validation"></span>
+
+            <label asp-for="Password"></label>
+            <input asp-for="Password" class="input" />
+            <span asp-validation-for="Password" class="validation"></span>
+
+            <label asp-for="ConfirmPassword"></label>
+            <input asp-for="ConfirmPassword" class="input" />
+            <span asp-validation-for="ConfirmPassword" class="validation"></span>
+
+            <button type="submit" class="btn btn-primary">create account</button>
+            <a asp-action="Login" class="btn">already have one? sign in</a>
+        </form>
+    </article>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

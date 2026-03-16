@@ -1,0 +1,13 @@
+@{
+    // shown when user lacks required role/permission
+    ViewData["Title"] = "Access denied";
+}
+
+<section class="hero fade-in">
+    <h1>access denied</h1>
+    <p class="subtitle">you do not have permission to open this page.</p>
+    <div class="hero-actions">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-primary">go home</a>
+        <a asp-controller="Home" asp-action="Dashboard" class="btn">dashboard</a>
+    </div>
+</section>

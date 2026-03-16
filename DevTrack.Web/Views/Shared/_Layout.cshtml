@@ -31,8 +31,19 @@
                     <span class="icon-wrap">◐</span>
                     <span>Theme</span>
                 </button>
-                @* Placeholder for Part III: replace with real Login/Logout flow. *@
-                <a class="btn btn-primary" href="#">Sign in</a>
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <span class="welcome-text">@User.Identity.Name</span>
+                    <form asp-controller="Account" asp-action="Logout" method="post" class="inline-form">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-primary">log out</button>
+                    </form>
+                }
+                else
+                {
+                    <a class="btn" asp-controller="Account" asp-action="Register">register</a>
+                    <a class="btn btn-primary" asp-controller="Account" asp-action="Login">sign in</a>
+                }
             </div>
         </header>
 
