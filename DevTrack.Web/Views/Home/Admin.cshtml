@@ -1,15 +1,14 @@
 @model IEnumerable<dynamic>
 
 @{
-    // Admin/reviewer page for moderation and system-level visibility.
     ViewData["Title"] = "Admin";
 }
 
 <section class="hero fade-in">
     <h1>Admin Review Center</h1>
-    <p class="subtitle">Instructor/reviewer workspace for visibility, approvals, and quality control across student submissions.</p>
+    <p class="subtitle">Instructor workspace for visibility, approvals, and quality control across student submissions.</p>
     <div class="hero-actions">
-        <a href="#" class="btn btn-primary">Review Queue</a>
+        <a asp-controller="Projects" asp-action="Index" class="btn btn-primary">All Projects</a>
         <a asp-controller="Home" asp-action="Dashboard" class="btn">Student View</a>
     </div>
 </section>
@@ -28,12 +27,12 @@
     <article class="card kpi fade-in">
         <h3>Approved</h3>
         <p class="metric">@ViewBag.ApprovedReviews</p>
-        <p class="muted">This month</p>
+        <p class="muted">Total approved</p>
     </article>
     <article class="card kpi fade-in">
-        <h3>Role Health</h3>
+        <h3>System Status</h3>
         <p class="status-row"><span class="dot"></span> @ViewBag.RoleHealth</p>
-        <p class="muted">Policy checks passing</p>
+        <p class="muted">All roles active</p>
     </article>
 
     <article class="card panel fade-in">
@@ -57,11 +56,11 @@
     </article>
 
     <article class="card panel fade-in">
-        <h2>Role matrix (starter)</h2>
+        <h2>Role matrix</h2>
         <ul class="list">
-            <li><span>Guest: view landing + register</span><span class="tag ok">Defined</span></li>
-            <li><span>Student: CRUD own projects</span><span class="tag ok">Defined</span></li>
-            <li><span>Admin: review + moderation</span><span class="tag ok">Defined</span></li>
+            <li><span>Guest: view landing page and register</span><span class="tag ok">Active</span></li>
+            <li><span>Student: CRUD own projects, tag skills</span><span class="tag ok">Active</span></li>
+            <li><span>Admin: view all projects, moderation feed</span><span class="tag ok">Active</span></li>
         </ul>
     </article>
 </section>

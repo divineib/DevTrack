@@ -1,43 +1,11 @@
 @{
-    // Project listing page for student-managed portfolio items.
     ViewData["Title"] = "Projects";
 }
 
 <section class="hero fade-in">
     <h1>Project Portfolio</h1>
-    <p class="subtitle">Track coursework, personal builds, and internship experiments in one organized space.</p>
+    <p class="subtitle">Redirecting to your project workspace...</p>
     <div class="hero-actions">
-        <a href="#" class="btn btn-primary">+ New Project</a>
-        <a asp-controller="Home" asp-action="Dashboard" class="btn">Back to Dashboard</a>
+        <a asp-controller="Projects" asp-action="Index" class="btn btn-primary">Go to Projects</a>
     </div>
-</section>
-
-<section class="grid">
-    <article class="card full fade-in">
-        <h2>Active projects</h2>
-        @* Demo records for shell setup and UI prototyping. *@
-        <ul class="list">
-            <li>
-                <span>
-                    <strong>DevTrack MVC Shell</strong><br />
-                    <span class="muted">ASP.NET Core MVC · UI foundation · role-ready architecture</span>
-                </span>
-                <span class="tag ok">In Progress</span>
-            </li>
-            <li>
-                <span>
-                    <strong>Campus Event API</strong><br />
-                    <span class="muted">C# Web API · authentication · data filtering</span>
-                </span>
-                <span class="tag warn">Planning</span>
-            </li>
-            <li>
-                <span>
-                    <strong>Algorithm Practice Tracker</strong><br />
-                    <span class="muted">SQLite · EF Core · analytics dashboard</span>
-                </span>
-                <span class="tag">Backlog</span>
-            </li>
-        </ul>
-    </article>
 </section>

@@ -35,7 +35,11 @@
                             @if (!string.IsNullOrWhiteSpace(project.GitHubRepoUrl))
                             {
                                 <br />
-                                <a href="@project.GitHubRepoUrl" target="_blank" rel="noopener" class="muted">github: @project.GitHubRepoName</a>
+                                <a href="@project.GitHubRepoUrl" target="_blank" rel="noopener" class="muted">github: @(project.GitHubRepoName ?? "linked")</a>
+                                @if (project.GitHubLastSyncedUtc.HasValue)
+                                {
+                                    <span class="muted"> · synced @project.GitHubLastSyncedUtc.Value.ToString("MMM d, yyyy")</span>
+                                }
                             }
                         </span>
                         <span class="inline-actions">
@@ -76,11 +80,11 @@
     <article class="card panel fade-in">
         <h2>skills in system</h2>
         <ul class="list">
-            @foreach (var skill in Model.Skills.Take(12))
+            @foreach (var skill in Model.Skills)
             {
                 <li>
                     <span>@skill.Name</span>
-                    <span class="tag">skill</span>
+                    <span class="tag">@(skill.Category?.Name ?? "general")</span>
                 </li>
             }
         </ul>

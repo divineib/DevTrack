@@ -44,7 +44,7 @@ public class ProjectsController : Controller
             Projects = await projectQuery
                 .OrderByDescending(p => p.UpdatedAtUtc ?? p.CreatedAtUtc)
                 .ToListAsync(),
-            Skills = await _db.Skills.AsNoTracking().OrderBy(s => s.Name).ToListAsync()
+            Skills = await _db.Skills.AsNoTracking().Include(s => s.Category).OrderBy(s => s.Name).ToListAsync()
         };
 
         return View(vm);
@@ -253,23 +253,23 @@ public class ProjectsController : Controller
     {
         var parsed = TryParseGitHubRepo(project.GitHubRepoUrl);
         if (parsed is null)
-        {
             return;
-        }
 
-        var info = await _gitHubRepoService.GetRepoInfoAsync(parsed.Value.owner, parsed.Value.repo);
-        if (info is null)
+        try
         {
-            return;
+            var info = await _gitHubRepoService.GetRepoInfoAsync(parsed.Value.owner, parsed.Value.repo);
+            if (info is null)
+                return;
+
+            project.GitHubRepoName = info.Name;
+            project.GitHubLastSyncedUtc = DateTime.UtcNow;
+
+            if (string.IsNullOrWhiteSpace(project.Description) && !string.IsNullOrWhiteSpace(info.Description))
+                project.Description = info.Description;
         }
-
-        project.GitHubRepoName = info.Name;
-        project.GitHubLastSyncedUtc = DateTime.UtcNow;
-
-        // auto-fill description if user left it blank
-        if (string.IsNullOrWhiteSpace(project.Description) && !string.IsNullOrWhiteSpace(info.Description))
+        catch (HttpRequestException)
         {
-            project.Description = info.Description;
+            // GitHub API unavailable or rate-limited — save the project without metadata
         }
     }
 

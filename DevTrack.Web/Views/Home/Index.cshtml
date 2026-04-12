@@ -1,14 +1,12 @@
 ﻿@{
-    // Public-facing overview page shown to non-authenticated users.
     ViewData["Title"] = "Overview";
 }
 
-@* Hero section communicates the system objective from Part I. *@
 <section class="hero fade-in">
     <h1>Build your developer journey with clarity.</h1>
     <p class="subtitle">
         DevTrack helps software engineering students track projects, map skills, and monitor growth over time.
-        Manage your portfolio, sync GitHub repositories later, and keep all progress in one clean workspace.
+        Manage your portfolio, sync GitHub repositories, and keep all progress in one clean workspace.
     </p>
     <div class="hero-actions">
         <a asp-controller="Home" asp-action="Dashboard" class="btn btn-primary">Open Dashboard</a>
@@ -20,7 +18,7 @@
     <article class="card kpi fade-in">
         <h3>Students</h3>
         <p class="metric">@ViewBag.StudentCount</p>
-        <p class="muted">Active this semester</p>
+        <p class="muted">Registered users</p>
     </article>
 
     <article class="card kpi fade-in">
@@ -32,32 +30,32 @@
     <article class="card kpi fade-in">
         <h3>Skills</h3>
         <p class="metric">@ViewBag.SkillCount</p>
-        <p class="muted">Categories available</p>
+        <p class="muted">Available to tag</p>
     </article>
 
     <article class="card kpi fade-in">
-        <h3>API Status</h3>
-        <p class="status-row"><span class="dot"></span> Ready</p>
-        <p class="muted">GitHub integration planned</p>
+        <h3>GitHub Sync</h3>
+        <p class="status-row"><span class="dot"></span> Connected</p>
+        <p class="muted">Repository metadata active</p>
     </article>
 
     <article class="card panel fade-in">
         <h2>Feature highlights</h2>
         <ul class="list">
-            <li><span>Responsive navigation with dark/light themes</span><span class="tag ok">Done</span></li>
+            <li><span>Responsive design with dark/light themes</span><span class="tag ok">Done</span></li>
             <li><span>Full project CRUD with skills tagging</span><span class="tag ok">Done</span></li>
-            <li><span>Student dashboard with live metrics</span><span class="tag ok">Done</span></li>
-            <li><span>Admin review center with moderation feed</span><span class="tag ok">Done</span></li>
+            <li><span>GitHub repository sync via REST API</span><span class="tag ok">Done</span></li>
+            <li><span>Role-based access: Student / Admin</span><span class="tag ok">Done</span></li>
         </ul>
     </article>
 
     <article class="card panel fade-in">
         <h2>Platform capabilities</h2>
         <ul class="list">
-            <li><span>ASP.NET Core MVC architecture</span><span class="tag ok">Active</span></li>
-            <li><span>Database-driven models with EF Core</span><span class="tag ok">Active</span></li>
-            <li><span>Role-based access: Student / Admin</span><span class="tag ok">Active</span></li>
-            <li><span>GitHub repository sync via API</span><span class="tag ok">Active</span></li>
+            <li><span>ASP.NET Core MVC (.NET 10)</span><span class="tag ok">Active</span></li>
+            <li><span>Entity Framework Core with SQLite</span><span class="tag ok">Active</span></li>
+            <li><span>ASP.NET Core Identity authentication</span><span class="tag ok">Active</span></li>
+            <li><span>GitHub REST API v3 integration</span><span class="tag ok">Active</span></li>
         </ul>
     </article>
 </section>

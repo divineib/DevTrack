@@ -1,16 +1,18 @@
 @model List<DevTrack.Web.Models.Project>
 
 @{
-    // Student workspace page (currently demo data only).
     ViewData["Title"] = "Dashboard";
 }
 
 <section class="hero fade-in">
     <h1>Student Dashboard</h1>
-    <p class="subtitle">A focused snapshot of project momentum, skills, and upcoming tasks.</p>
+    <p class="subtitle">A focused snapshot of your project momentum, skills, and portfolio progress.</p>
     <div class="hero-actions">
         <a asp-controller="Home" asp-action="Projects" class="btn btn-primary">Manage Projects</a>
-        <a asp-controller="Home" asp-action="Admin" class="btn">Admin View</a>
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-controller="Home" asp-action="Admin" class="btn">Admin View</a>
+        }
     </div>
 </section>
 
@@ -57,11 +59,11 @@
     </article>
 
     <article class="card panel fade-in">
-        <h2>Upcoming goals</h2>
+        <h2>Completed milestones</h2>
         <ul class="list">
-            <li><span>Connect GitHub API token securely</span><span class="tag warn">Planned</span></li>
-            <li><span>Enable role-based dashboard cards</span><span class="tag warn">Planned</span></li>
-            <li><span>Add export to PDF resume summary</span><span class="tag">Backlog</span></li>
+            <li><span>GitHub repository sync via API</span><span class="tag ok">Done</span></li>
+            <li><span>Role-based access (Student / Admin)</span><span class="tag ok">Done</span></li>
+            <li><span>Full project CRUD with skill tagging</span><span class="tag ok">Done</span></li>
         </ul>
     </article>
 </section>
