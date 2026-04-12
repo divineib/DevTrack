@@ -53,8 +53,9 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-// redirect http requests to https
-app.UseHttpsRedirection();
+// In Development we run HTTP-only (see launchSettings); skip redirect so localhost works reliably.
+if (!app.Environment.IsDevelopment())
+    app.UseHttpsRedirection();
 // enable endpoint routing
 app.UseRouting();
 

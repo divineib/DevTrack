@@ -5,14 +5,14 @@
 </div>
 
 <p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=fff" alt=".NET 10" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/ASP.NET_Core-MVC-5C2D91?logo=dotnet&logoColor=fff" alt="ASP.NET Core MVC" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/Status-Complete-1a7f37" alt="Status" /></a>
-  <a href="#"><img src="https://custom-icon-badges.demolab.com/badge/C%23-%23239120.svg?logo=cshrp&logoColor=white" alt="C#" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/Razor-512BD4?logo=dotnet&logoColor=fff" alt="Razor" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=fff" alt="SQLite" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/CSS-639?logo=css&logoColor=fff" alt="CSS" /></a>
-  <a href="#"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000" alt="JavaScript" /></a>
+  <a href="https://github.com/divineib/DevTrack"><img src="https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=fff" alt=".NET 10" /></a>
+  <a href="https://github.com/divineib/DevTrack"><img src="https://img.shields.io/badge/ASP.NET_Core-MVC-5C2D91?logo=dotnet&logoColor=fff" alt="ASP.NET Core MVC" /></a>
+  <a href="https://github.com/divineib/DevTrack"><img src="https://img.shields.io/badge/Status-Complete-1a7f37" alt="Status" /></a>
+  <a href="https://github.com/divineib/DevTrack"><img src="https://custom-icon-badges.demolab.com/badge/C%23-%23239120.svg?logo=cshrp&logoColor=white" alt="C#" /></a>
+  <a href="https://github.com/divineib/DevTrack"><img src="https://img.shields.io/badge/Razor-512BD4?logo=dotnet&logoColor=fff" alt="Razor" /></a>
+  <a href="https://github.com/divineib/DevTrack"><img src="https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=fff" alt="SQLite" /></a>
+  <a href="https://github.com/divineib/DevTrack"><img src="https://img.shields.io/badge/CSS-639?logo=css&logoColor=fff" alt="CSS" /></a>
+  <a href="https://github.com/divineib/DevTrack"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000" alt="JavaScript" /></a>
 </p>
 
 ---
@@ -31,7 +31,7 @@ DevTrack is a web application that helps software engineering students track cou
 - Responsive design with mobile hamburger navigation
 - Dark/light theme toggle with saved preference
 - Client-side and server-side form validation
-- Database seeding for development testing
+- Database seeding with demo data for local exploration
 
 ## Tech Stack
 
@@ -52,68 +52,27 @@ DevTrack is a web application that helps software engineering students track cou
 
 | Service | Purpose |
 |---------|---------|
-| **GitHub API** | Fetches repository metadata (name, description, stars, last update) when a user links a GitHub URL to a project |
-| **ASP.NET Core Identity** | Manages user registration, login/logout, password hashing, and role assignment (Student/Admin) |
+| **GitHub API** | Fetches repository metadata when a user links a GitHub URL to a project |
+| **ASP.NET Core Identity** | User registration, login/logout, password hashing, and roles (Student/Admin) |
 
 ## Project Structure
 
 ```text
 DevTrack/
-├── DevTrack.slnx                        # Solution file
-├── DevTrack.Web/                         # Main web project
-│   ├── Program.cs                        # Entry point and service configuration
-│   ├── DevTrack.Web.csproj               # Project file with NuGet packages
-│   ├── appsettings.json                  # Connection string and config
-│   │
-│   ├── Controllers/                      # MVC Controllers
-│   │   ├── HomeController.cs             # Landing, Dashboard, Admin, Privacy
-│   │   ├── AccountController.cs          # Register, Login, Logout
-│   │   └── ProjectsController.cs         # Project CRUD + Skill management
-│   │
-│   ├── Models/                           # Domain entities
-│   │   ├── AppUser.cs                    # Identity user extension
-│   │   ├── Project.cs                    # Core project entity
-│   │   ├── ProjectStatus.cs             # Status enum (Planned, InProgress, etc.)
-│   │   ├── Skill.cs                     # Skill entity
-│   │   ├── Category.cs                  # Skill/project category
-│   │   ├── ProjectSkill.cs             # Many-to-many join entity
-│   │   ├── Review.cs                    # Admin review record
-│   │   ├── StudentProfile.cs           # Student profile extension
-│   │   └── ErrorViewModel.cs            # Error page model
-│   │
-│   ├── ViewModels/                       # Presentation-layer models
-│   │   ├── Account/
-│   │   │   ├── LoginViewModel.cs
-│   │   │   └── RegisterViewModel.cs
-│   │   └── Projects/
-│   │       ├── ProjectFormViewModel.cs
-│   │       └── ProjectsIndexViewModel.cs
-│   │
-│   ├── Views/                            # Razor views
-│   │   ├── Home/                         # Landing, Dashboard, Admin, Privacy
-│   │   ├── Account/                      # Login, Register, AccessDenied
-│   │   ├── Projects/                     # Index, Create, Edit, _ProjectForm
-│   │   └── Shared/                       # _Layout, _ValidationScriptsPartial, Error
-│   │
-│   ├── Data/                             # Database layer
-│   │   ├── ApplicationDbContext.cs       # EF Core DbContext
-│   │   └── DbSeeder.cs                  # Seed data (roles, categories, skills)
-│   │
-│   ├── Services/                         # External integrations
-│   │   ├── IGitHubRepoService.cs        # GitHub API interface
-│   │   ├── GitHubRepoService.cs         # Implementation
-│   │   └── GitHubRepoInfo.cs            # DTO
-│   │
-│   ├── Migrations/                       # EF Core database migrations
-│   │
-│   └── wwwroot/                          # Static assets
-│       ├── css/site.css                  # Theme tokens, responsive styles
-│       ├── js/site.js                    # Theme toggle, mobile nav, animations
-│       └── lib/                          # Vendored libraries (jQuery, Bootstrap)
-│
-├── REPORT.md                             # Final project report (source)
-├── REPORT.pdf                            # Final project report (PDF)
-└── PROJECT_STATUS.md                     # Phase progress checklist
+├── DevTrack.slnx                 # Solution file
+├── dotnet-tools.json             # dotnet-ef tool manifest (for migrations)
+├── DevTrack.Web/
+│   ├── Program.cs
+│   ├── DevTrack.Web.csproj
+│   ├── appsettings.json
+│   ├── Controllers/              # Home, Account, Projects
+│   ├── Models/                   # Domain entities
+│   ├── ViewModels/               # Form and list view models
+│   ├── Views/                    # Razor pages
+│   ├── Data/                     # DbContext + seed data
+│   ├── Services/                 # GitHub API client
+│   ├── Migrations/               # EF Core migrations
+│   └── wwwroot/                  # CSS, JS, lib
 ```
 
 ## Getting Started
@@ -122,26 +81,41 @@ DevTrack/
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download)
 
-### Run Locally
+### Run locally
 
 ```bash
-cd DevTrack.Web
+git clone https://github.com/divineib/DevTrack.git
+cd DevTrack/DevTrack.Web
 dotnet restore
 dotnet run
 ```
 
-Open the URL shown in the terminal (e.g. `http://localhost:5092`).
+Open **`http://localhost:5092`** in your browser (default HTTP profile; use **http**, not https, unless you run with the `https` launch profile and trust the dev certificate).
 
-On first run the app automatically applies migrations and seeds starter data (roles, categories, skills).
+On first run, the app applies migrations and seeds roles, categories, skills, demo users, sample projects, and reviews.
 
-### Test Accounts
+### Demo accounts (after seed)
 
-Register a new account to explore the **Student** role. To access the **Admin** review center, assign the Admin role to a user via the seeded role system.
+Password for both: **`DevTrack1`**
 
-## Documentation
+| Email | Role |
+|-------|------|
+| `student@devtrack.local` | Student |
+| `admin@devtrack.local` | Admin |
 
-| File | Description |
-|------|-------------|
-| [`REPORT.md`](./REPORT.md) | Full project report — structure, MVC breakdown, key code, responsive design |
-| [`REPORT.pdf`](./REPORT.pdf) | PDF version of the report for submission |
-| [`PROJECT_STATUS.md`](./PROJECT_STATUS.md) | Phase progress checklist (Parts I–IV) |
+You can also register a new account; new users receive the **Student** role by default.
+
+### EF Core migrations (optional)
+
+If you change models, install the local tool and add a migration:
+
+```bash
+dotnet tool restore
+dotnet ef migrations add YourMigrationName --project DevTrack.Web
+```
+
+---
+
+## License
+
+This project was created for coursework. Use and modify as you like.

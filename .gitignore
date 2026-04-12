@@ -6,6 +6,10 @@
 # dotenv files
 .env
 
+# SQLite auxiliary files (created when the app runs locally)
+*.db-shm
+*.db-wal
+
 # User-specific files
 *.rsuser
 *.suo
