@@ -142,8 +142,8 @@ public static class DbSeeder
                     Status = ProjectStatus.InProgress,
                     OwnerId = studentUser.Id,
                     CategoryId = webCat.Id,
-                    GitHubRepoUrl = "https://github.com/divineib/DevTrack",
-                    GitHubRepoName = "DevTrack",
+                    GitHubRepoUrl = "https://github.com/octocat/Hello-World",
+                    GitHubRepoName = "Hello-World",
                     GitHubLastSyncedUtc = DateTime.UtcNow,
                     CreatedAtUtc = DateTime.UtcNow.AddDays(-30),
                     UpdatedAtUtc = DateTime.UtcNow

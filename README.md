@@ -79,7 +79,7 @@ DevTrack/
 
 ## Repository notes (for contributors)
 
-- **SQLite** (`*.db`, `*.db-shm`, `*.db-wal`) is listed in `.gitignore`. Nothing is committed from your machine; cloning the repo and running the app creates a **new local database**, applies migrations, and runs the seeder.
+- **SQLite database files are not on GitHub.** Patterns `*.db`, `*.db-shm`, and `*.db-wal` are in `.gitignore`, so your local `devtrack.db` / `devtrack.dev.db` (and any WAL files) stay on your machine only. There is **no database in this repository**—cloners get a **new empty database** on first run; migrations create tables and the seeder adds **generic demo data** (shared demo accounts and a placeholder GitHub link), not your personal records.
 - **`node_modules/`** is ignored. The repo includes **`package.json`** and **`package-lock.json`** so `npm ci` or `npm install` is reproducible.
 - **`wwwroot/css/site.css`** is the **built** Tailwind output and is **committed** so others can run `dotnet run` **without** Node.js. After you change `Styles/app.css`, run `npm run build:css` and commit the updated `site.css` so the UI stays in sync on GitHub.
 

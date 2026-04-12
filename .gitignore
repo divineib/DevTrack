@@ -7,6 +7,7 @@
 .env
 
 # SQLite DB and auxiliary files (local only; not committed — each clone gets a fresh DB from migrations + seed)
+# Filenames from appsettings: devtrack.db (default), devtrack.dev.db (Development) — still covered by *.db below.
 *.db-shm
 *.db-wal
 
