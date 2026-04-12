@@ -6,7 +6,7 @@ namespace DevTrack.Web.ViewModels.Account;
 public class RegisterViewModel
 {
     [Required]
-    [Display(Name = "display name")]
+    [Display(Name = "Display name")]
     [StringLength(80)]
     public string DisplayName { get; set; } = string.Empty;
 
@@ -21,8 +21,8 @@ public class RegisterViewModel
 
     [Required]
     [DataType(DataType.Password)]
-    [Compare(nameof(Password), ErrorMessage = "passwords do not match")]
-    [Display(Name = "confirm password")]
+    [Compare(nameof(Password), ErrorMessage = "The passwords do not match.")]
+    [Display(Name = "Confirm password")]
     public string ConfirmPassword { get; set; } = string.Empty;
 
     public string? ReturnUrl { get; set; }

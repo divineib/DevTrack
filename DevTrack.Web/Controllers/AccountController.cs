@@ -91,7 +91,7 @@ public class AccountController : Controller
             return RedirectToAction("Dashboard", "Home");
         }
 
-        ModelState.AddModelError(string.Empty, "login failed. check your email and password.");
+        ModelState.AddModelError(string.Empty, "Login failed. Check your email and password.");
         return View(model);
     }
 

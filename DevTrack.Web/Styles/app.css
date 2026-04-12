@@ -1,0 +1,486 @@
+@import "tailwindcss";
+
+@source "../Views/**/*.cshtml";
+@source "../wwwroot/js/**/*.js";
+
+/* Tailwind dark: maps to class on <html> (set in site.js alongside data-theme) */
+@variant dark (&:where(html.dark, html.dark *));
+
+@theme {
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+
+/* ---- Theme tokens (light/dark via data-theme; glass uses Tailwind + dark:) ---- */
+:root {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --bg: #0c0b0a;
+  --bg-accent: #141210;
+  --surface: rgba(255, 255, 255, 0.06);
+  --surface-2: rgba(255, 255, 255, 0.09);
+  --text: #f4f1eb;
+  --muted: #a39e94;
+  --border: rgba(255, 255, 255, 0.12);
+  --brand: #c9a06c;
+  --brand-hover: #d4b080;
+  --success: #8fbc8f;
+  --danger: #e07070;
+}
+
+html[data-theme="light"] {
+  --bg: #e8e4dc;
+  --bg-accent: #ddd8cf;
+  --surface: rgba(255, 255, 255, 0.55);
+  --surface-2: rgba(255, 255, 255, 0.75);
+  --text: #1a1714;
+  --muted: #5c564c;
+  --border: rgba(0, 0, 0, 0.1);
+  --brand: #8b6914;
+  --brand-hover: #6b5010;
+  --success: #2d6a2d;
+  --danger: #b33a3a;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    background-color: var(--bg);
+    background-image: linear-gradient(
+      165deg,
+      var(--bg-accent) 0%,
+      var(--bg) 45%,
+      var(--bg) 100%
+    );
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@layer components {
+  .app-shell {
+    @apply mx-auto flex min-h-screen max-w-[1080px] flex-col px-4 sm:px-5;
+  }
+
+  /* Liquid glass shell */
+  .topbar {
+    @apply sticky top-0 z-20 mb-2 mt-4 flex items-center justify-between gap-4 rounded-2xl border px-3 py-2.5 sm:px-4;
+    @apply backdrop-blur-xl;
+    @apply border-white/15 bg-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.12)];
+    @apply dark:border-white/10 dark:bg-white/[0.07] dark:shadow-[0_8px_40px_rgba(0,0,0,0.5)];
+  }
+
+  .topbar-left,
+  .topbar-right {
+    @apply flex items-center gap-3;
+  }
+
+  .brand {
+    @apply inline-flex items-center gap-2 font-semibold tracking-tight;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+  }
+
+  .brand-mark {
+    @apply inline-flex h-8 w-8 items-center justify-center rounded-md text-sm font-bold;
+    color: var(--bg);
+    background: linear-gradient(145deg, var(--brand), var(--brand-hover));
+    box-shadow: 0 2px 12px color-mix(in oklab, var(--brand) 40%, transparent);
+  }
+
+  .main-nav {
+    @apply flex items-center gap-0.5;
+  }
+
+  .main-nav a {
+    @apply rounded-lg px-2.5 py-1.5 text-sm font-medium transition-colors;
+    color: var(--muted);
+    text-transform: none !important;
+    font-feature-settings: normal;
+  }
+
+  .main-nav a:hover {
+    color: var(--text);
+    background: var(--surface-2);
+  }
+
+  .main-nav a:focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-[var(--brand)];
+  }
+
+  .content {
+    @apply flex-1 pb-6;
+  }
+
+  .footer {
+    @apply flex items-center justify-between border-t py-4 text-sm;
+    border-color: var(--border);
+    color: var(--muted);
+  }
+
+  .footer a {
+    color: var(--brand);
+    @apply underline decoration-1 underline-offset-4;
+  }
+
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-lg border px-3.5 py-2 text-sm font-semibold transition-colors;
+    @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--brand)];
+    color: var(--text);
+    border-color: var(--border);
+    background: var(--surface);
+    text-transform: none !important;
+  }
+
+  .btn-small {
+    @apply px-2 py-1.5 text-xs;
+  }
+
+  .btn:hover {
+    background: var(--surface-2);
+  }
+
+  .btn-primary {
+    border-color: color-mix(in oklab, var(--brand) 50%, #000);
+    background: linear-gradient(145deg, var(--brand), var(--brand-hover));
+    color: var(--bg);
+  }
+
+  html[data-theme="light"] .btn-primary {
+    color: #fffcf7;
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.06);
+  }
+
+  .btn-ghost {
+    @apply border-transparent bg-transparent;
+  }
+
+  .icon-wrap {
+    @apply inline-flex text-base leading-none;
+  }
+
+  .hero {
+    @apply rounded-r-xl rounded-tl-sm border-l-4 p-6 sm:p-8;
+    @apply backdrop-blur-md;
+    border-color: var(--border);
+    border-left-color: var(--brand);
+    background: var(--surface);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.06) inset,
+      0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  html.dark .hero {
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.05) inset,
+      0 16px 48px rgba(0, 0, 0, 0.35);
+  }
+
+  .hero h1 {
+    @apply m-0 font-semibold leading-tight tracking-tight;
+    font-family: var(--font-display);
+    font-size: clamp(1.55rem, 3.5vw, 2.05rem);
+    text-transform: none !important;
+    font-feature-settings: normal;
+  }
+
+  .subtitle {
+    @apply my-3 max-w-[58ch] text-[0.98rem];
+    color: var(--muted);
+  }
+
+  .hero-actions {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .grid {
+    @apply mt-4 grid grid-cols-12 gap-3.5;
+  }
+
+  .card {
+    @apply rounded-xl border p-4;
+    border-color: var(--border);
+    background: var(--surface);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset;
+    @apply backdrop-blur-sm;
+  }
+
+  .card h2 {
+    @apply mt-0 font-semibold tracking-tight;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    text-transform: none !important;
+    font-feature-settings: normal;
+  }
+
+  .card h3 {
+    @apply mt-0;
+  }
+
+  .kpi {
+    grid-column: span 3;
+  }
+
+  .panel {
+    grid-column: span 6;
+  }
+
+  .full {
+    grid-column: span 12;
+  }
+
+  .metric {
+    @apply text-2xl font-semibold tracking-tight;
+    font-family: var(--font-display);
+  }
+
+  .muted {
+    color: var(--muted);
+  }
+
+  .list {
+    @apply m-0 grid list-none gap-2 p-0;
+  }
+
+  .list li {
+    @apply flex items-center justify-between gap-2.5 rounded-lg border p-2.5 sm:gap-3;
+    border-color: var(--border);
+    background: var(--surface-2);
+  }
+
+  .inline-actions {
+    @apply inline-flex flex-wrap items-center gap-1.5;
+  }
+
+  .inline-form {
+    @apply inline;
+  }
+
+  .welcome-text {
+    @apply max-w-[12rem] truncate text-sm sm:max-w-[14rem];
+    color: var(--muted);
+  }
+
+  .auth-grid {
+    @apply mt-4;
+  }
+
+  .auth-card {
+    grid-column: 3 / span 8;
+  }
+
+  .form-stack {
+    @apply grid gap-2;
+  }
+
+  label {
+    @apply text-sm font-medium;
+    color: var(--muted);
+    text-transform: none;
+  }
+
+  .input {
+    @apply w-full rounded-lg border px-2.5 py-2 text-sm;
+    border-color: var(--border);
+    background: var(--surface-2);
+    color: var(--text);
+    font-family: var(--font-sans);
+  }
+
+  .input:focus-visible {
+    @apply outline outline-2 outline-offset-0;
+    outline-color: var(--brand);
+  }
+
+  .textarea {
+    @apply min-h-[100px] resize-y;
+  }
+
+  .validation {
+    @apply text-xs;
+    color: var(--danger);
+  }
+
+  .validation-errors {
+    @apply text-sm;
+    color: var(--danger);
+  }
+
+  .checkbox-row {
+    @apply inline-flex items-center gap-1.5;
+  }
+
+  .skills-checklist {
+    @apply grid grid-cols-1 gap-x-3 gap-y-1.5 sm:grid-cols-2;
+  }
+
+  .tag {
+    @apply rounded border px-1.5 py-0.5 text-xs font-medium;
+    border-color: var(--border);
+    color: var(--muted);
+  }
+
+  .tag.ok {
+    color: var(--success);
+    border-color: color-mix(in oklab, var(--success) 45%, var(--border));
+  }
+
+  .tag.warn {
+    color: #c4a01f;
+  }
+
+  .tag.danger {
+    color: var(--danger);
+  }
+
+  .status-row {
+    @apply flex items-center gap-2;
+  }
+
+  .dot {
+    @apply h-1.5 w-1.5 shrink-0 rounded-full;
+    background: var(--success);
+  }
+
+  .fade-in {
+    @apply translate-y-1.5 opacity-0 transition-[opacity,transform] duration-300 ease-out;
+  }
+
+  .fade-in.visible {
+    @apply translate-y-0 opacity-100;
+  }
+
+  .mobile-menu-btn {
+    @apply hidden rounded-lg border-0 bg-transparent p-2;
+  }
+
+  .mobile-menu-btn:focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-[var(--brand)];
+  }
+
+  .hamburger-icon,
+  .hamburger-icon::before,
+  .hamburger-icon::after {
+    @apply block h-0.5 w-[18px] rounded-sm transition-transform duration-200 ease-out;
+    background: var(--text);
+  }
+
+  .hamburger-icon {
+    position: relative;
+  }
+
+  .hamburger-icon::before,
+  .hamburger-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  .hamburger-icon::before {
+    top: -6px;
+  }
+
+  .hamburger-icon::after {
+    top: 6px;
+  }
+
+  .mobile-menu-btn[aria-expanded="true"] .hamburger-icon {
+    background: transparent;
+  }
+
+  .mobile-menu-btn[aria-expanded="true"] .hamburger-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .mobile-menu-btn[aria-expanded="true"] .hamburger-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  @media (max-width: 980px) {
+    .mobile-menu-btn {
+      @apply inline-flex items-center justify-center;
+    }
+
+    .main-nav {
+      @apply hidden w-full flex-col gap-0.5 pt-2;
+    }
+
+    .main-nav.open {
+      @apply flex;
+    }
+
+    .topbar-left {
+      @apply flex-wrap;
+    }
+
+    .kpi,
+    .panel {
+      grid-column: span 6;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .app-shell {
+      @apply px-2.5;
+    }
+
+    .topbar {
+      @apply flex-col items-stretch pb-2;
+    }
+
+    .topbar-left,
+    .topbar-right {
+      @apply flex-wrap justify-between gap-2;
+    }
+
+    .topbar-right {
+      @apply border-t pt-2;
+      border-color: var(--border);
+    }
+
+    .welcome-text {
+      @apply max-w-[9rem] text-xs;
+    }
+
+    .kpi,
+    .panel,
+    .full {
+      grid-column: span 12;
+    }
+
+    .auth-card {
+      grid-column: span 12;
+    }
+
+    .skills-checklist {
+      @apply grid-cols-1;
+    }
+
+    .list li {
+      @apply flex-col items-start;
+    }
+  }
+}

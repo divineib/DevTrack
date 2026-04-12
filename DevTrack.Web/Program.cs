@@ -45,6 +45,23 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
+// In Development, avoid stale CSS/JS in the browser while iterating on styles.
+if (app.Environment.IsDevelopment())
+{
+    app.UseStaticFiles(new StaticFileOptions
+    {
+        OnPrepareResponse = ctx =>
+        {
+            var path = ctx.File.Name;
+            if (path.EndsWith(".css", StringComparison.OrdinalIgnoreCase)
+                || path.EndsWith(".js", StringComparison.OrdinalIgnoreCase))
+            {
+                ctx.Context.Response.Headers.CacheControl = "no-cache, no-store, must-revalidate";
+            }
+        }
+    });
+}
+
 // configure middleware pipeline
 if (!app.Environment.IsDevelopment())
 {

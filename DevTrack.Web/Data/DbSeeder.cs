@@ -15,6 +15,8 @@ public static class DbSeeder
 
         await db.Database.MigrateAsync();
 
+        await MigrateLegacyCasingAsync(db);
+
         var roles = new[] { "Student", "Admin" };
         foreach (var role in roles)
         {
@@ -25,33 +27,73 @@ public static class DbSeeder
         if (!await db.Categories.AnyAsync())
         {
             db.Categories.AddRange(
-                new Category { Name = "web development", Description = "mvc, ui, and full-stack app work" },
-                new Category { Name = "backend", Description = "apis, data, and services" },
-                new Category { Name = "cloud", Description = "deployment and cloud tools" }
+                new Category { Name = "Web development", Description = "MVC, UI, and full-stack app work." },
+                new Category { Name = "Backend", Description = "APIs, data, and services." },
+                new Category { Name = "Cloud", Description = "Deployment and cloud tools." }
             );
             await db.SaveChangesAsync();
         }
 
         if (!await db.Skills.AnyAsync())
         {
-            var webCat = await db.Categories.FirstAsync(c => c.Name == "web development");
-            var backendCat = await db.Categories.FirstAsync(c => c.Name == "backend");
-            var cloudCat = await db.Categories.FirstAsync(c => c.Name == "cloud");
+            var webCat = await db.Categories.FirstAsync(c => c.Name == "Web development");
+            var backendCat = await db.Categories.FirstAsync(c => c.Name == "Backend");
+            var cloudCat = await db.Categories.FirstAsync(c => c.Name == "Cloud");
 
             db.Skills.AddRange(
-                new Skill { Name = "asp.net core mvc", Description = "server-side mvc app building", CategoryId = webCat.Id },
-                new Skill { Name = "entity framework core", Description = "data access and migrations", CategoryId = backendCat.Id },
-                new Skill { Name = "sqlite", Description = "lightweight relational database", CategoryId = backendCat.Id },
-                new Skill { Name = "github api", Description = "public repository metadata integration", CategoryId = webCat.Id },
-                new Skill { Name = "razor views", Description = "html + c# templating engine", CategoryId = webCat.Id },
-                new Skill { Name = "css / responsive design", Description = "custom layout with media queries", CategoryId = webCat.Id },
-                new Skill { Name = "docker", Description = "containerized deployment", CategoryId = cloudCat.Id },
-                new Skill { Name = "javascript", Description = "client-side interactivity", CategoryId = webCat.Id }
+                new Skill { Name = "ASP.NET Core MVC", Description = "Server-side MVC app building.", CategoryId = webCat.Id },
+                new Skill { Name = "Entity Framework Core", Description = "Data access and migrations.", CategoryId = backendCat.Id },
+                new Skill { Name = "SQLite", Description = "Lightweight relational database.", CategoryId = backendCat.Id },
+                new Skill { Name = "GitHub API", Description = "Public repository metadata integration.", CategoryId = webCat.Id },
+                new Skill { Name = "Razor views", Description = "HTML + C# templating.", CategoryId = webCat.Id },
+                new Skill { Name = "CSS / responsive design", Description = "Custom layout with media queries.", CategoryId = webCat.Id },
+                new Skill { Name = "Docker", Description = "Containerized deployment.", CategoryId = cloudCat.Id },
+                new Skill { Name = "JavaScript", Description = "Client-side interactivity.", CategoryId = webCat.Id }
             );
             await db.SaveChangesAsync();
         }
 
         await SeedUsersAndProjectsAsync(db, userManager);
+    }
+
+    /// <summary>
+    /// One-time casing fixes for databases seeded before display names were title-cased.
+    /// </summary>
+    private static async Task MigrateLegacyCasingAsync(ApplicationDbContext db)
+    {
+        var categoryRenames = new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["web development"] = "Web development",
+            ["backend"] = "Backend",
+            ["cloud"] = "Cloud",
+        };
+
+        foreach (var cat in await db.Categories.ToListAsync())
+        {
+            if (categoryRenames.TryGetValue(cat.Name, out var newName))
+                cat.Name = newName;
+        }
+
+        var skillRenames = new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["asp.net core mvc"] = "ASP.NET Core MVC",
+            ["entity framework core"] = "Entity Framework Core",
+            ["sqlite"] = "SQLite",
+            ["github api"] = "GitHub API",
+            ["razor views"] = "Razor views",
+            ["css / responsive design"] = "CSS / responsive design",
+            ["docker"] = "Docker",
+            ["javascript"] = "JavaScript",
+        };
+
+        foreach (var skill in await db.Skills.ToListAsync())
+        {
+            if (skillRenames.TryGetValue(skill.Name, out var newName))
+                skill.Name = newName;
+        }
+
+        if (db.ChangeTracker.HasChanges())
+            await db.SaveChangesAsync();
     }
 
     private static async Task SeedUsersAndProjectsAsync(ApplicationDbContext db, UserManager<AppUser> userManager)
@@ -79,17 +121,17 @@ public static class DbSeeder
 
         if (studentUser is not null && !await db.Projects.AnyAsync())
         {
-            var webCat = await db.Categories.FirstAsync(c => c.Name == "web development");
-            var backendCat = await db.Categories.FirstAsync(c => c.Name == "backend");
+            var webCat = await db.Categories.FirstAsync(c => c.Name == "Web development");
+            var backendCat = await db.Categories.FirstAsync(c => c.Name == "Backend");
 
             var skills = await db.Skills.ToListAsync();
-            var mvcSkill = skills.First(s => s.Name == "asp.net core mvc");
-            var efSkill = skills.First(s => s.Name == "entity framework core");
-            var sqliteSkill = skills.First(s => s.Name == "sqlite");
-            var githubSkill = skills.First(s => s.Name == "github api");
-            var razorSkill = skills.First(s => s.Name == "razor views");
-            var cssSkill = skills.First(s => s.Name == "css / responsive design");
-            var jsSkill = skills.First(s => s.Name == "javascript");
+            var mvcSkill = skills.First(s => s.Name == "ASP.NET Core MVC");
+            var efSkill = skills.First(s => s.Name == "Entity Framework Core");
+            var sqliteSkill = skills.First(s => s.Name == "SQLite");
+            var githubSkill = skills.First(s => s.Name == "GitHub API");
+            var razorSkill = skills.First(s => s.Name == "Razor views");
+            var cssSkill = skills.First(s => s.Name == "CSS / responsive design");
+            var jsSkill = skills.First(s => s.Name == "JavaScript");
 
             var projects = new List<Project>
             {

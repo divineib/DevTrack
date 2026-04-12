@@ -42,7 +42,7 @@
         <h2>Recent activity</h2>
         @if (!Model.Any())
         {
-            <p class="muted">no project activity yet. create your first project.</p>
+            <p class="muted">No project activity yet. Create your first project.</p>
         }
         else
         {
@@ -51,7 +51,7 @@
                 {
                     <li>
                         <span>@project.Title</span>
-                        <span class="tag">@project.Status</span>
+                        <span class="tag">@project.Status.ToDisplayLabel()</span>
                     </li>
                 }
             </ul>

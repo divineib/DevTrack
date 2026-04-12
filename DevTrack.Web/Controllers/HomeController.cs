@@ -77,7 +77,7 @@ public class HomeController : Controller
         ViewBag.PendingReviews = pendingReviews;
         ViewBag.FlaggedReviews = flaggedReviews;
         ViewBag.ApprovedReviews = approvedReviews;
-        ViewBag.RoleHealth = "stable";
+        ViewBag.RoleHealth = "Stable";
 
         var feed = await _db.Reviews
             .AsNoTracking()

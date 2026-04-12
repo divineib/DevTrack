@@ -11,7 +11,7 @@
   <a href="https://github.com/divineib/DevTrack"><img src="https://custom-icon-badges.demolab.com/badge/C%23-%23239120.svg?logo=cshrp&logoColor=white" alt="C#" /></a>
   <a href="https://github.com/divineib/DevTrack"><img src="https://img.shields.io/badge/Razor-512BD4?logo=dotnet&logoColor=fff" alt="Razor" /></a>
   <a href="https://github.com/divineib/DevTrack"><img src="https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=fff" alt="SQLite" /></a>
-  <a href="https://github.com/divineib/DevTrack"><img src="https://img.shields.io/badge/CSS-639?logo=css&logoColor=fff" alt="CSS" /></a>
+  <a href="https://github.com/divineib/DevTrack"><img src="https://img.shields.io/badge/Tailwind_CSS-v4-38bdf8?logo=tailwindcss&logoColor=fff" alt="Tailwind CSS v4" /></a>
   <a href="https://github.com/divineib/DevTrack"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000" alt="JavaScript" /></a>
 </p>
 
@@ -40,7 +40,7 @@ DevTrack is a web application that helps software engineering students track cou
 | **Backend** | ASP.NET Core MVC (.NET 10) | Server-side MVC with Razor views, minimal hosting model |
 | **Language** | C# | Strongly typed, first-class .NET support |
 | **Views** | Razor (`.cshtml`) | HTML + C# templating with tag helpers and partials |
-| **Styling** | Custom CSS (no Tailwind) | CSS variables, DM Sans + Source Serif 4, warm neutral palette |
+| **Styling** | Tailwind CSS v4 + liquid glass | Utility-first build (`Styles/app.css` → `wwwroot/css/site.css`); frosted panels, semantic tokens; accessible focus/hover patterns aligned with shadcn-style UX (this app is Razor/MVC — [shadcn/ui](https://ui.shadcn.com/) is React-only and is not bundled) |
 | **Client Scripts** | Vanilla JavaScript | Theme toggle, mobile nav, scroll animations — no framework overhead |
 | **Database** | SQLite | Lightweight, zero-config relational database suitable for local dev |
 | **ORM** | Entity Framework Core | Code-first migrations, LINQ queries, relationship configuration |
@@ -72,27 +72,60 @@ DevTrack/
 │   ├── Data/                     # DbContext + seed data
 │   ├── Services/                 # GitHub API client
 │   ├── Migrations/               # EF Core migrations
-│   └── wwwroot/                  # CSS, JS, lib
+│   ├── Styles/                   # Tailwind source (`app.css`)
+│   ├── package.json              # Tailwind CLI scripts (devDependency)
+│   └── wwwroot/                  # Built CSS, JS, client libraries
 ```
+
+## Repository notes (for contributors)
+
+- **SQLite** (`*.db`, `*.db-shm`, `*.db-wal`) is listed in `.gitignore`. Nothing is committed from your machine; cloning the repo and running the app creates a **new local database**, applies migrations, and runs the seeder.
+- **`node_modules/`** is ignored. The repo includes **`package.json`** and **`package-lock.json`** so `npm ci` or `npm install` is reproducible.
+- **`wwwroot/css/site.css`** is the **built** Tailwind output and is **committed** so others can run `dotnet run` **without** Node.js. After you change `Styles/app.css`, run `npm run build:css` and commit the updated `site.css` so the UI stays in sync on GitHub.
 
 ## Getting Started
 
 ### Prerequisites
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download)
+- [Node.js](https://nodejs.org/) (LTS recommended) — **only if** you edit Tailwind source under `DevTrack.Web/Styles/`
 
 ### Run locally
 
+From the repository root (the folder that contains `DevTrack.slnx`):
+
 ```bash
 git clone https://github.com/divineib/DevTrack.git
-cd DevTrack/DevTrack.Web
+cd DevTrack
+cd DevTrack.Web
 dotnet restore
 dotnet run
 ```
 
-Open **`http://localhost:5092`** in your browser (default HTTP profile; use **http**, not https, unless you run with the `https` launch profile and trust the dev certificate).
+Open **`http://localhost:5092`** in your browser (default **HTTP** profile from `launchSettings.json`; use **http**, not https, unless you run with the **https** profile and trust the ASP.NET dev certificate).
 
 On first run, the app applies migrations and seeds roles, categories, skills, demo users, sample projects, and reviews.
+
+### Tailwind CSS (optional)
+
+Only needed when changing styles:
+
+```bash
+cd DevTrack.Web
+npm install
+npm run build:css
+```
+
+- **`npm run watch:css`** — rebuilds `wwwroot/css/site.css` whenever `Styles/app.css` changes (use while editing styles).
+- If the UI looks unstyled or stale after a pull, run `npm run build:css` again and hard-refresh the browser (**Development** builds use strict cache headers for `.css` / `.js`).
+
+### Troubleshooting
+
+| Issue | What to try |
+|-------|-------------|
+| Styles look wrong after `git pull` | `cd DevTrack.Web && npm install && npm run build:css`, then hard-refresh |
+| Port **5092** already in use | Stop the other process using that port or change `applicationUrl` in `Properties/launchSettings.json` |
+| Database errors after switching branches | Delete local `*.db` files in `DevTrack.Web`, run again so migrations + seed recreate data |
 
 ### Demo accounts (after seed)
 
@@ -107,7 +140,7 @@ You can also register a new account; new users receive the **Student** role by d
 
 ### EF Core migrations (optional)
 
-If you change models, install the local tool and add a migration:
+If you change models, from the **repository root** (folder that contains `DevTrack.slnx`):
 
 ```bash
 dotnet tool restore

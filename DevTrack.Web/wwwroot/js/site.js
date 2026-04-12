@@ -9,7 +9,13 @@
     // Load saved preference or fall back to OS/browser preference.
     const savedTheme = localStorage.getItem("devtrack-theme");
     const initialTheme = savedTheme ?? (prefersLight ? "light" : "dark");
-    root.setAttribute("data-theme", initialTheme);
+
+    const applyTheme = (theme) => {
+        root.setAttribute("data-theme", theme);
+        root.classList.toggle("dark", theme === "dark");
+    };
+
+    applyTheme(initialTheme);
 
     if (toggle) {
         // Keep icon/aria text aligned with active theme for accessibility.
@@ -23,7 +29,7 @@
 
         toggle.addEventListener("click", () => {
             const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
-            root.setAttribute("data-theme", next);
+            applyTheme(next);
             localStorage.setItem("devtrack-theme", next);
             updateLabel();
         });

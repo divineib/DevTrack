@@ -39,7 +39,7 @@
         <h2>Moderation feed</h2>
         @if (!Model.Any())
         {
-            <p class="muted">no moderation items yet.</p>
+            <p class="muted">No moderation items yet.</p>
         }
         else
         {
@@ -47,7 +47,7 @@
                 @foreach (var item in Model)
                 {
                     <li>
-                        <span>@(item.Notes ?? "review update")</span>
+                        <span>@(item.Notes ?? "Review update")</span>
                         <span class="tag">@item.Decision</span>
                     </li>
                 }

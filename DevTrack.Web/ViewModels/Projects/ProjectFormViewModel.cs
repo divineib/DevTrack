@@ -20,13 +20,13 @@ public class ProjectFormViewModel
     public ProjectStatus Status { get; set; } = ProjectStatus.Planned;
 
     [Url]
-    [Display(Name = "github repo url")]
+    [Display(Name = "GitHub repository URL")]
     public string? GitHubRepoUrl { get; set; }
 
-    [Display(Name = "category")]
+    [Display(Name = "Category")]
     public int? CategoryId { get; set; }
 
-    [Display(Name = "skills")]
+    [Display(Name = "Skills")]
     public List<int> SelectedSkillIds { get; set; } = new();
 
     // dropdown + checklist data

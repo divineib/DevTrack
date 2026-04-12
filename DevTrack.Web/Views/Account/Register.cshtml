@@ -1,13 +1,12 @@
 @model DevTrack.Web.ViewModels.Account.RegisterViewModel
 
 @{
-    // register page for new students
     ViewData["Title"] = "Register";
 }
 
 <section class="hero fade-in">
-    <h1>create your account</h1>
-    <p class="subtitle">start tracking projects and skills in devtrack.</p>
+    <h1>Create your account</h1>
+    <p class="subtitle">Start tracking projects and skills in DevTrack.</p>
 </section>
 
 <section class="grid auth-grid">
@@ -34,8 +33,8 @@
             <input asp-for="ConfirmPassword" class="input" />
             <span asp-validation-for="ConfirmPassword" class="validation"></span>
 
-            <button type="submit" class="btn btn-primary">create account</button>
-            <a asp-action="Login" class="btn">already have one? sign in</a>
+            <button type="submit" class="btn btn-primary">Create account</button>
+            <a asp-action="Login" class="btn">Already have one? Sign in</a>
         </form>
     </article>
 </section>

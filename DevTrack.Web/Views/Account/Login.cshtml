@@ -1,13 +1,12 @@
 @model DevTrack.Web.ViewModels.Account.LoginViewModel
 
 @{
-    // login page for students/admins
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Sign in";
 }
 
 <section class="hero fade-in">
-    <h1>welcome back</h1>
-    <p class="subtitle">sign in to your devtrack account.</p>
+    <h1>Welcome back</h1>
+    <p class="subtitle">Sign in to your DevTrack account.</p>
 </section>
 
 <section class="grid auth-grid">
@@ -28,11 +27,11 @@
 
             <label class="checkbox-row">
                 <input asp-for="RememberMe" />
-                <span>remember me</span>
+                <span>Remember me</span>
             </label>
 
-            <button type="submit" class="btn btn-primary">sign in</button>
-            <a asp-action="Register" class="btn">need an account? register</a>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+            <a asp-action="Register" class="btn">Need an account? Register</a>
         </form>
     </article>
 </section>
