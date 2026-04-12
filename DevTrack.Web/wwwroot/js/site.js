@@ -34,9 +34,25 @@
         yearEl.textContent = `${new Date().getFullYear()}`;
     }
 
-    // Lightweight scroll-based reveal animation for dashboard cards.
-    // Placeholder for future enhancement:
-    // migrate to a dedicated animation library if interaction complexity grows.
+    const menuToggle = document.getElementById("menuToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener("click", () => {
+            const isOpen = mainNav.classList.toggle("open");
+            menuToggle.setAttribute("aria-expanded", isOpen);
+            menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+        });
+
+        mainNav.addEventListener("click", (e) => {
+            if (e.target.tagName === "A") {
+                mainNav.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+            }
+        });
+    }
+
+    // Scroll-based reveal animation for dashboard cards.
     const animated = document.querySelectorAll(".fade-in");
     const observer = new IntersectionObserver(
         (entries) => {

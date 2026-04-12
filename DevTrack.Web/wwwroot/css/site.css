@@ -1,8 +1,4 @@
-/*
-  DevTrack UI Theme Tokens
-  Placeholder for Part III:
-  - move hard-coded values into a design token strategy if theme system expands.
-*/
+/* DevTrack UI Theme Tokens */
 :root {
   --bg: #0d1117;
   --surface: #161b22;
@@ -391,9 +387,78 @@ a {
   100% { box-shadow: 0 0 0 0 rgba(63, 185, 80, 0); }
 }
 
+.mobile-menu-btn {
+  display: none;
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+}
+
+.hamburger-icon,
+.hamburger-icon::before,
+.hamburger-icon::after {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 250ms ease, opacity 250ms ease;
+}
+
+.hamburger-icon {
+  position: relative;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.hamburger-icon::before {
+  top: -6px;
+}
+
+.hamburger-icon::after {
+  top: 6px;
+}
+
+.mobile-menu-btn[aria-expanded="true"] .hamburger-icon {
+  background: transparent;
+}
+
+.mobile-menu-btn[aria-expanded="true"] .hamburger-icon::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.mobile-menu-btn[aria-expanded="true"] .hamburger-icon::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
 @media (max-width: 980px) {
+  .mobile-menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .main-nav {
     display: none;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 100%;
+    padding-top: 0.5rem;
+  }
+
+  .main-nav.open {
+    display: flex;
+  }
+
+  .topbar-left {
+    flex-wrap: wrap;
   }
 
   .kpi,
@@ -410,11 +475,23 @@ a {
   .topbar {
     flex-direction: column;
     align-items: stretch;
+    padding: 0.5rem 0.7rem;
   }
 
   .topbar-left,
   .topbar-right {
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .topbar-right {
+    padding-top: 0.4rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .welcome-text {
+    font-size: 0.82rem;
   }
 
   .kpi,
@@ -429,5 +506,10 @@ a {
 
   .skills-checklist {
     grid-template-columns: 1fr;
+  }
+
+  .list li {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

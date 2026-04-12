@@ -10,19 +10,26 @@
 </head>
 <body>
     <div class="app-shell">
-        @* Global shell header. For now this is a static nav.
-           Placeholder for Part III: show/hide links by authentication state and user role. *@
         <header class="topbar">
             <div class="topbar-left">
                 <a class="brand" asp-area="" asp-controller="Home" asp-action="Index">
                     <span class="brand-mark">D</span>
                     <span>DevTrack</span>
                 </a>
-                <nav class="main-nav">
+                <button id="menuToggle" class="btn btn-ghost mobile-menu-btn" type="button" aria-label="Open navigation menu" aria-expanded="false">
+                    <span class="hamburger-icon"></span>
+                </button>
+                <nav id="mainNav" class="main-nav">
                     <a asp-area="" asp-controller="Home" asp-action="Index">Overview</a>
-                    <a asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
-                    <a asp-area="" asp-controller="Home" asp-action="Projects">Projects</a>
-                    <a asp-area="" asp-controller="Home" asp-action="Admin">Admin</a>
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <a asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a>
+                        <a asp-area="" asp-controller="Home" asp-action="Projects">Projects</a>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-area="" asp-controller="Home" asp-action="Admin">Admin</a>
+                    }
                 </nav>
             </div>
             <div class="topbar-right">
