@@ -67,7 +67,7 @@
     );
 
     animated.forEach((node, index) => {
-        node.style.transitionDelay = `${index * 70}ms`;
+        node.style.transitionDelay = `${index * 35}ms`;
         observer.observe(node);
     });
 })();

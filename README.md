@@ -40,7 +40,7 @@ DevTrack is a web application that helps software engineering students track cou
 | **Backend** | ASP.NET Core MVC (.NET 10) | Server-side MVC with Razor views, minimal hosting model |
 | **Language** | C# | Strongly typed, first-class .NET support |
 | **Views** | Razor (`.cshtml`) | HTML + C# templating with tag helpers and partials |
-| **Styling** | Custom CSS with CSS Variables | Responsive grid/flexbox layout, dark/light theming via custom properties |
+| **Styling** | Custom CSS (no Tailwind) | CSS variables, DM Sans + Source Serif 4, warm palette — avoids generic “AI dashboard” chrome |
 | **Client Scripts** | Vanilla JavaScript | Theme toggle, mobile nav, scroll animations — no framework overhead |
 | **Database** | SQLite | Lightweight, zero-config relational database suitable for local dev |
 | **ORM** | Entity Framework Core | Code-first migrations, LINQ queries, relationship configuration |
